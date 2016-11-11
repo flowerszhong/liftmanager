@@ -4,7 +4,7 @@
  * www.crudigniter.com
  */
  
-class Admin extends CI_Controller
+class Admin extends MY_Controller
 {
     function __construct()
     {
