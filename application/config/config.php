@@ -513,4 +513,3 @@ $config['rewrite_short_tags'] = FALSE;
 $config['proxy_ips'] = '';
 
 
-$config['site_name'] = 'lift mananger config';

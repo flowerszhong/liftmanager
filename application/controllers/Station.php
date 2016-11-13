@@ -4,7 +4,7 @@
  * www.crudigniter.com
  */
  
-class Station extends CI_Controller
+class Station extends MY_Controller
 {
     function __construct()
     {
@@ -17,7 +17,7 @@ class Station extends CI_Controller
      */
     function index()
     {
-        $data['lm_station'] = $this->Station_model->get_all_lm_station();
+        $data['lm_station'] = $this->Station_model->get_all_lm_station2();
 
         $this->load->view('station/index',$data);
     }
@@ -38,7 +38,6 @@ class Station extends CI_Controller
 				'grade' => $this->input->post('grade'),
 				'parent' => $this->input->post('parent'),
 				'comments' => $this->input->post('comments'),
-				'thumbnail' => $this->input->post('thumbnail'),
             );
             
             $lm_station_id = $this->Station_model->add_lm_station($params);
@@ -46,7 +45,9 @@ class Station extends CI_Controller
         }
         else
         {
-            $this->load->view('station/add');
+            $main_stations = $this->Station_model->get_station_by_grade(STATION);
+            $view_data['stations'] = $main_stations;
+            $this->load->view('station/add',$view_data);
         }
     }  
 
@@ -80,7 +81,8 @@ class Station extends CI_Controller
             else
             {   
                 $data['lm_station'] = $this->Station_model->get_lm_station($id);
-    
+                $main_stations = $this->Station_model->get_station_by_grade(STATION);
+                $data['stations'] = $main_stations;
                 $this->load->view('station/edit',$data);
             }
         }

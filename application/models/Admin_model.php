@@ -18,6 +18,13 @@ class Admin_model extends CI_Model
     {
         return $this->db->get_where('lm_admin',array('id'=>$id))->row_array();
     }
+
+    function get_admin($id)
+    {
+        $sql = "select a.*,b.grade,b.name from lm_admin a left join lm_station b on a.station = b.id where a.id = $id";
+        $query = $this->db->query($sql);
+        return $query->row_array();
+    }
     
     /*
      * Get all lm_admin
@@ -25,6 +32,13 @@ class Admin_model extends CI_Model
     function get_all_lm_admin()
     {
         return $this->db->get('lm_admin')->result_array();
+    }
+
+    function get_all_admin()
+    {
+        $sql = "select a.*,b.name as station_name from lm_admin a left join lm_station b on a.station = b.id";
+        $query = $this->db->query($sql);
+        return $query->result_array();
     }
     
     /*

@@ -23,18 +23,16 @@
 
                 
                 <li class="panel active">
-                    <a href="index.html" >
-                        <i class="icon-table"></i> Dashboard
-	   
-                       
+                    <a href="<?php echo site_url('admin/index'); ?>" >
+                        <i class="icon-table"></i> 管理员列表
                     </a>                   
                 </li>
 
 
 
                 <li class="panel ">
-                    <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#component-nav">
-                        <i class="icon-tasks"> </i> UI Elements     
+                    <a href="<?php echo site_url('station/index'); ?>" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#component-nav">
+                        <i class="icon-tasks"> </i> 车站管理    
 	   
                         <span class="pull-right">
                           <i class="icon-angle-left"></i>
@@ -56,8 +54,8 @@
                     </ul>
                 </li>
                 <li class="panel ">
-                    <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle collapsed" data-target="#form-nav">
-                        <i class="icon-pencil"></i> Forms
+                    <a href="<?php echo site_url('lift/index') ?>" data-parent="#menu" data-toggle="collapse" class="accordion-toggle collapsed" data-target="#form-nav">
+                        <i class="icon-pencil"></i> 电梯管理
 	   
                         <span class="pull-right">
                             <i class="icon-angle-left"></i>

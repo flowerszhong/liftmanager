@@ -17,7 +17,7 @@ class Admin extends MY_Controller
      */
     function index()
     {
-        $data['lm_admin'] = $this->Admin_model->get_all_lm_admin();
+        $data['lm_admin'] = $this->Admin_model->get_all_admin();
 
         $this->load->view('admin/index',$data);
     }
@@ -29,32 +29,36 @@ class Admin extends MY_Controller
     {   
         $this->load->library('form_validation');
 
-		$this->form_validation->set_rules('name','Name','alpha_numeric|max_length[16]|required');
-		$this->form_validation->set_rules('displayname','Displayname','required|max_length[10]');
-		$this->form_validation->set_rules('pwd','Pwd','required');
-		$this->form_validation->set_rules('salt1','Salt1','required|max_length[12]');
-		$this->form_validation->set_rules('salt2','Salt2','required');
+		$this->form_validation->set_rules('name','Name','alpha_dash|min_length[4]|max_length[16]|required');
+        $this->form_validation->set_rules('displayname','Displayname','required|max_length[10]');
+        $this->form_validation->set_rules('pwd','密码','required|max_length[16]');
 		$this->form_validation->set_rules('station','Station','required');
-		$this->form_validation->set_rules('power','Power','required');
 		
 		if($this->form_validation->run())     
         {   
+            $post = $this->input->post();
+            $salt1 = rand(1,9999);
+            $salt2 = rand(1000,9999);
+            $pwd = $post['pwd'];
+            $pwd = sha1($salt2. $salt2 . $pwd);
+
             $params = array(
-				'name' => $this->input->post('name'),
-				'displayname' => $this->input->post('displayname'),
-				'pwd' => $this->input->post('pwd'),
-				'salt1' => $this->input->post('salt1'),
-				'salt2' => $this->input->post('salt2'),
-				'station' => $this->input->post('station'),
-				'power' => $this->input->post('power'),
+				'name' => $post['name'],
+				'displayname' => $post['displayname'],
+				'pwd' => $pwd,
+				'salt1' => $salt1,
+				'salt2' => $salt2,
+				'station' => $post['station'],
+				'power' => $post['grade'],
             );
-            
+
             $lm_admin_id = $this->Admin_model->add_lm_admin($params);
             redirect('admin/index');
         }
         else
         {
-            $this->load->view('admin/add');
+            $data['stations'] = $this->Station_model->get_all_lm_station();
+            $this->load->view('admin/add',$data);
         }
     }  
 
@@ -95,7 +99,8 @@ class Admin extends MY_Controller
             }
             else
             {   
-                $data['lm_admin'] = $this->Admin_model->get_lm_admin($id);
+                $data['lm_admin'] = $this->Admin_model->get_admin($id);
+                $data['stations'] = $this->Station_model->get_all_lm_station();
     
                 $this->load->view('admin/edit',$data);
             }

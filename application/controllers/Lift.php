@@ -4,7 +4,7 @@
  * www.crudigniter.com
  */
  
-class Lift extends CI_Controller
+class Lift extends MY_Controller
 {
     function __construct()
     {
@@ -63,7 +63,10 @@ class Lift extends CI_Controller
         }
         else
         {
-            $this->load->view('lift/add');
+            $stations = $this->Station_model->get_station_by_grade(STATION);
+            $sub_stations = $this->Station_model->get_station_by_grade(SUB_STATION);
+            $view_data = array('stations'=>$stations,'sub_stations'=>$sub_stations);
+            $this->load->view('lift/add',$view_data);
         }
     }  
 

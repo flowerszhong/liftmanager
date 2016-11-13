@@ -1,4 +1,17 @@
-<div class="pull-right">
+<?php $this->load->view('header'); ?>
+
+<div class="row">
+	<div class="col-lg-12">
+		
+
+<div class="panel panel-default">
+<div class="panel-heading">
+	电梯列表
+</div>	
+
+<div class="panel-body">
+
+<div class="btn-control">
 	<a href="<?php echo site_url('lift/add'); ?>" class="btn btn-success">Add</a> 
 </div>
 
@@ -51,3 +64,12 @@
     </tr>
 	<?php } ?>
 </table>
+
+
+</div>
+
+</div>
+</div>
+
+
+<?php $this->load->view('footer'); ?>

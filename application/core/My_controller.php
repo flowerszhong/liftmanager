@@ -8,9 +8,10 @@ class MY_Controller extends CI_Controller {
         parent::__construct();
         $this->load->library('session');
         $this->load->library('form_validation');
+        $this->load->model('Station_model');
         $this->load->helper(array('form', 'url'));
         // $this->checkLogin();
-        $this->config->load('site_settings');
+        $this->config->load('site_settings',TRUE);
         date_default_timezone_set('Asia/Chongqing');
     }
 

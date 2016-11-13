@@ -26,6 +26,13 @@ class Station_model extends CI_Model
     {
         return $this->db->get('lm_station')->result_array();
     }
+
+    function get_all_lm_station2()
+    {
+        $sql = "select a.*,b.name as main_station from lm_station a left join lm_station b on a.parent = b.id";
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    }
     
     /*
      * function to add new lm_station
@@ -67,5 +74,11 @@ class Station_model extends CI_Model
         {
             return "Error occuring while deleting lm_station";
         }
+    }
+
+
+    function get_station_by_grade($grade)
+    {
+        return $this->db->get_where('lm_station',array('grade'=>$grade))->result_array();
     }
 }

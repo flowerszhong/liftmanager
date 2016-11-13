@@ -658,13 +658,14 @@ font-weight: bolder;
   background: #fff;
   border: 0px solid #e4e4e4;
   min-height:1200px;
+  padding-top:20px;
 }
 
 @media (min-width: 768px) {
   .inner {
     float: left;
     width: 100%;
-
+    padding-top: 20px;
   }
  
 }
@@ -2603,3 +2604,31 @@ fieldset[disabled] .btn-grad.btn-metis-6.active {
 }
 
 /* END Pricing Table */
+
+.btn-control{
+  height: 40px;
+}
+
+.panel-heading{
+  font-size: 24px;
+}
+
+
+.stations-choose{
+  margin-top: 10px;
+  line-height: 50px;
+}
+
+
+.stations-choose span{
+  display: inline-block;
+  padding: 3px 10px;
+  margin:5px 10px 0 5px;
+  border:1px solid #ccc;
+  line-height: 30px;
+  cursor: pointer;
+}
+
+.stations-choose span.selected{
+  background: #eee;
+}
