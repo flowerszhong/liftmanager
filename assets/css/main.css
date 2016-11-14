@@ -115,9 +115,9 @@ body.padTop53 {
 
 @media (min-width: 768px) {
   #left {
-    position: relative;
-    float: left;
+    position: fixed;
     width: 100px;
+    top:80px;
   }
   #left #menu.affix {
     position: fixed;
@@ -374,8 +374,6 @@ body.padTop53 {
   display: none;
   /*background-color: #5cb85c;*/
   color:#0029FF;
-   border-right:1px solid rgb(216, 215, 215);
-    border-left:1px solid rgb(216, 215, 215);
 }
 
 @media (min-width: 768px) {
