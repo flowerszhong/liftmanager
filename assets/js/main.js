@@ -9,4 +9,10 @@ $(function () {
 		$('#grade').val(grade);
 		$('#station-name').val(name);
 	});
+
+	$('.btn-detail').on('click', function(event) {
+		event.preventDefault();
+		$(this).parents('tr').next('.detail').toggle();
+		/* Act on the event */
+	});
 });

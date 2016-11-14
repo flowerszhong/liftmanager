@@ -1,0 +1,11 @@
+.lift-form select,
+.lift-form input{
+    max-width: 240px;
+}
+.lift-form textarea{
+    max-width: 600px;
+}
+
+.detail{
+    display: none;
+}

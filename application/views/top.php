@@ -8,6 +8,7 @@
                 <header class="navbar-header">
 
                     <a href="index.html" class="navbar-brand">
+                    <img src="<?php echo asset_file_url('img/logo.png'); ?>" alt="">
                     广州南车站-电梯管理系统
                         </a>
                 </header>

@@ -1,4 +1,5 @@
 <?php $this->load->view('header'); ?>
+<link rel="stylesheet" href="<?php echo asset_file_url('css/lift.css'); ?>" />
 
 
 <div class="row">
@@ -9,7 +10,7 @@
 				</div>
 				<div class="panel-body">
 					<?php echo validation_errors(); ?>
-					<?php echo form_open('lift/add',array("class"=>"form-horizontal")); ?>
+					<?php echo form_open('lift/add',array("class"=>"form-horizontal lift-form")); ?>
 
 						<div class="form-group">
 							<label for="lid" class="col-md-2 control-label">内部编号</label>
@@ -68,22 +69,24 @@
 								</div>
 							</div>
 						<div class="form-group">
-							<label for="vin" class="col-md-2 control-label">Vin</label>
+							<label for="vin" class="col-md-2 control-label">设备代码</label>
 							<div class="col-md-10">
 								<input type="text" name="vin" value="<?php echo $this->input->post('vin'); ?>" class="form-control" id="vin" />
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="code" class="col-md-2 control-label">Code</label>
+							<label for="code" class="col-md-2 control-label">使用编号</label>
 							<div class="col-md-10">
 								<input type="text" name="code" value="<?php echo $this->input->post('code'); ?>" class="form-control" id="code" />
 							</div>
 						</div>
 						<div class="form-group">
-								<label for="location" class="col-md-2 control-label">Location</label>
+								<label for="location" class="col-md-2 control-label">安装位置</label>
 								<div class="col-md-10">
-									<select name="location" class="form-control">
-										<option value="">select</option>
+								<input type="text" name="location" value="<?php echo $this->input->post('location'); ?>" class="form-control" id="" />
+									<select name="" class="form-control">
+										<option value="">请选择安装位置</option>
+
 										<?php 
 										$location_values = array(
 										);
@@ -99,61 +102,61 @@
 								</div>
 							</div>
 						<div class="form-group">
-							<label for="model" class="col-md-2 control-label">Model</label>
+							<label for="model" class="col-md-2 control-label">设备名称或型号</label>
 							<div class="col-md-10">
 								<input type="text" name="model" value="<?php echo $this->input->post('model'); ?>" class="form-control" id="model" />
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="orig_no" class="col-md-2 control-label">Orig No</label>
+							<label for="orig_no" class="col-md-2 control-label">原产品合同编号</label>
 							<div class="col-md-10">
 								<input type="text" name="orig_no" value="<?php echo $this->input->post('orig_no'); ?>" class="form-control" id="orig_no" />
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="change_no" class="col-md-2 control-label">Change No</label>
+							<label for="change_no" class="col-md-2 control-label">改造产品合同编号</label>
 							<div class="col-md-10">
 								<input type="text" name="change_no" value="<?php echo $this->input->post('change_no'); ?>" class="form-control" id="change_no" />
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="production_date" class="col-md-2 control-label">Production Date</label>
+							<label for="production_date" class="col-md-2 control-label">出厂日期</label>
 							<div class="col-md-10">
 								<input type="text" name="production_date" value="<?php echo $this->input->post('production_date'); ?>" class="form-control" id="production_date" />
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="manufacturer" class="col-md-2 control-label">Manufacturer</label>
+							<label for="manufacturer" class="col-md-2 control-label">制造厂家</label>
 							<div class="col-md-10">
 								<input type="text" name="manufacturer" value="<?php echo $this->input->post('manufacturer'); ?>" class="form-control" id="manufacturer" />
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="param" class="col-md-2 control-label">Param</label>
+							<label for="param" class="col-md-2 control-label">主要性能参数</label>
 							<div class="col-md-10">
-								<input type="text" name="param" value="<?php echo $this->input->post('param'); ?>" class="form-control" id="param" />
+								<textarea name="param" class="form-control" id="param" cols="30" rows="10"><?php echo $this->input->post('param'); ?></textarea>
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="last_check" class="col-md-2 control-label">Last Check</label>
+							<label for="last_check" class="col-md-2 control-label">上次检验日期</label>
 							<div class="col-md-10">
 								<input type="text" name="last_check" value="<?php echo $this->input->post('last_check'); ?>" class="form-control" id="last_check" />
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="next_check" class="col-md-2 control-label">Next Check</label>
+							<label for="next_check" class="col-md-2 control-label">下次检验日期</label>
 							<div class="col-md-10">
 								<input type="text" name="next_check" value="<?php echo $this->input->post('next_check'); ?>" class="form-control" id="next_check" />
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="distribution" class="col-md-2 control-label">Distribution</label>
+							<label for="distribution" class="col-md-2 control-label">配电间位置</label>
 							<div class="col-md-10">
 								<input type="text" name="distribution" value="<?php echo $this->input->post('distribution'); ?>" class="form-control" id="distribution" />
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="no96333" class="col-md-2 control-label">No96333</label>
+							<label for="no96333" class="col-md-2 control-label">96333编号</label>
 							<div class="col-md-10">
 								<input type="text" name="no96333" value="<?php echo $this->input->post('no96333'); ?>" class="form-control" id="no96333" />
 							</div>

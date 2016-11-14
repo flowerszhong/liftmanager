@@ -117,7 +117,10 @@ class Lift extends MY_Controller
             else
             {   
                 $data['lm_lift'] = $this->Lift_model->get_lm_lift($id);
-    
+                $stations = $this->Station_model->get_station_by_grade(STATION);
+                $sub_stations = $this->Station_model->get_station_by_grade(SUB_STATION);
+                $data['stations'] = $stations;
+                $data['sub_stations'] = $sub_stations;
                 $this->load->view('lift/edit',$data);
             }
         }

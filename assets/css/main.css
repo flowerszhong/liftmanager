@@ -2632,3 +2632,15 @@ fieldset[disabled] .btn-grad.btn-metis-6.active {
 .stations-choose span.selected{
   background: #eee;
 }
+
+
+
+.navbar-header{
+  margin-left: 0;
+}
+
+.navbar-inverse .navbar-brand:hover,
+.navbar-inverse .navbar-brand:focus {
+  color: blue;
+  background-color: transparent;
+}

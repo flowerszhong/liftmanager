@@ -72,8 +72,8 @@
                 </li>
 
                 <li class="panel">
-                    <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#pagesr-nav">
-                        <i class="icon-table"></i> Pages
+                    <a href="<?php echo site_url('maintenance/index'); ?>" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#pagesr-nav">
+                        <i class="icon-table"></i> 检修记录
 	   
                         <span class="pull-right">
                             <i class="icon-angle-left"></i>
