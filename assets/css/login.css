@@ -89,7 +89,10 @@ body {
 }
 
 #logoimg {
-  width: 315px;
-height: 51px;
-padding-left: 33px
+    padding-left: 33px
+}
+
+
+.form-signin .hint{
+    text-align: right;
 }

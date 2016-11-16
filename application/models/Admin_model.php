@@ -82,4 +82,21 @@ class Admin_model extends CI_Model
             return "Error occuring while deleting lm_admin";
         }
     }
+
+    function check_login($name,$pwd)
+    {
+        $this->db->where('name',$name);
+        $admins = $this->db->get('lm_admin')->result_array();
+        foreach ($admins as $admin) {
+            $p1 = $admin['pwd'];
+            $salt2 = $admin['salt2'];
+            $p2 = sha1($salt2 . $salt2 . $pwd);
+            if($p1==$p2){
+                return $admin;
+            }
+        }
+
+        return FALSE;
+
+    }
 }

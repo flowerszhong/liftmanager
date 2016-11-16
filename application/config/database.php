@@ -80,7 +80,7 @@ $db['default'] = array(
 	'password' => '',
 	'database' => 'gznlift',
 	'dbdriver' => 'mysqli',
-	'dbprefix' => '',
+	'dbprefix' => 'lm_',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
 	'cache_on' => FALSE,

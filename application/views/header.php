@@ -15,15 +15,15 @@
         <![endif]-->
     <!-- GLOBAL STYLES -->
     <!-- GLOBAL STYLES -->
-    <link rel="stylesheet" href="<?php echo asset_file_url('plugins/bootstrap/css/bootstrap.css'); ?>" />
-    <link rel="stylesheet" href="<?php echo asset_file_url('css/main.css'); ?>" />
-    <link rel="stylesheet" href="<?php echo asset_file_url('css/theme.css'); ?>" />
-    <link rel="stylesheet" href="<?php echo asset_file_url('css/MoneAdmin.css'); ?>" />
-    <link rel="stylesheet" href="<?php echo asset_file_url('plugins/Font-Awesome/css/font-awesome.css'); ?>" />
+    <link rel="stylesheet" href="<?php asset_file_url('plugins/bootstrap/css/bootstrap.css'); ?>" />
+    <link rel="stylesheet" href="<?php asset_file_url('css/main.css'); ?>" />
+    <link rel="stylesheet" href="<?php asset_file_url('css/theme.css'); ?>" />
+    <link rel="stylesheet" href="<?php asset_file_url('css/MoneAdmin.css'); ?>" />
+    <link rel="stylesheet" href="<?php asset_file_url('plugins/Font-Awesome/css/font-awesome.css'); ?>" />
     <!--END GLOBAL STYLES -->
 
     <!-- PAGE LEVEL STYLES -->
-    <link rel="stylesheet" href="<?php echo asset_file_url('plugins/dataTables/dataTables.bootstrap.css'); ?>" />
+    <link rel="stylesheet" href="<?php asset_file_url('plugins/dataTables/dataTables.bootstrap.css'); ?>" />
     <!-- END PAGE LEVEL  STYLES -->
        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
