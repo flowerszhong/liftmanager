@@ -10,6 +10,7 @@ class Login extends CI_Controller {
         $this->load->library('form_validation');
         $this->load->helper(array('form', 'url'));
         $this->load->model('admin_model');
+        $this->config->load('site_settings',TRUE);
         date_default_timezone_set('Asia/Chongqing');
     }
 

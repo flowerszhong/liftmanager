@@ -9,7 +9,7 @@
 
                     <a href="<?php echo site_url(); ?>" class="navbar-brand">
                     <img src="<?php echo asset_file_url('img/logo.png'); ?>" alt="">
-                    广州南车站-电梯管理系统
+                    <?php echo $this->config->item('site_name','site_settings'); ?>
                         </a>
                 </header>
                 <!-- END LOGO SECTION -->
@@ -28,7 +28,7 @@
                             <li><a href="#"><i class="icon-gear"></i> 设置 </a>
                             </li>
                             <li class="divider"></li>
-                            <li><a href="login.html"><i class="icon-signout"></i> 退出登录 </a>
+                            <li><a href="<?php echo site_url('login/logout'); ?>"><i class="icon-signout"></i> 退出登录 </a>
                             </li>
                         </ul>
 

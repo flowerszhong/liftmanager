@@ -8,22 +8,22 @@
         </div>
         <div class="panel-body">
         <div class="btn-control">
-            <a href="<?php echo site_url('maintenance/add'); ?>" class="btn btn-success">Add</a> 
+            <a href="<?php echo site_url('maintenance/add'); ?>" class="btn btn-success">新增 检修记录</a> 
         </div>
             <table class="table table-striped table-bordered">
                 <tr>
-                    <th>ID</th>
-                    <th>Lid</th>
-                    <th>Maintenance Man</th>
-                    <th>Check Date</th>
-                    <th>Problem</th>
-                    <th>Cause</th>
-                    <th>Charge Partment</th>
-                    <th>Charge Man</th>
-                    <th>Deadline</th>
-                    <th>Deal</th>
-                    <th>Status</th>
-                    <th>Actions</th>
+                    <th>序号</th>
+                    <th>内部编号</th>
+                    <th>检查人</th>
+                    <th>检查日期</th>
+                    <th>发现问题</th>
+                    <th>原因分析</th>
+                    <th>整改部门</th>
+                    <th>责任人</th>
+                    <th>整改期限</th>
+                    <th>整改措施</th>
+                    <th>整改状态</th>
+                    <th>操作</th>
                 </tr>
                 <?php foreach($lm_maintenance as $l){ ?>
                 <tr>
@@ -40,7 +40,7 @@
                     <td><?php echo $l['status']; ?></td>
                     <td>
                         <a href="<?php echo site_url('maintenance/edit/'.$l['id']); ?>" class="btn btn-info">Edit</a> 
-                        <a href="<?php echo site_url('maintenance/remove/'.$l['id']); ?>" class="btn btn-danger">Delete</a>
+                        <a href="<?php echo site_url('maintenance/remove/'.$l['id']); ?>" class="btn btn-danger btn-delete">Delete</a>
                     </td>
                 </tr>
                 <?php } ?>

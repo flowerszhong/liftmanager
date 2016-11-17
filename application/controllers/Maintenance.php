@@ -4,7 +4,7 @@
  * www.crudigniter.com
  */
  
-class Maintenance extends CI_Controller
+class Maintenance extends MY_Controller
 {
     function __construct()
     {

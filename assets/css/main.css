@@ -2642,3 +2642,8 @@ fieldset[disabled] .btn-grad.btn-metis-6.active {
   color: blue;
   background-color: transparent;
 }
+
+
+.pagination{
+  margin-top: 0!important;
+}

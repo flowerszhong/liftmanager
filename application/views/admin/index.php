@@ -12,7 +12,7 @@
 
         <div class="panel-body">
         <div class="btn-control">
-        	<a href="<?php echo site_url('admin/add'); ?>" class="btn btn-success">Add</a> 
+        	<a href="<?php echo site_url('admin/add'); ?>" class="btn btn-success">新增 管理员</a> 
         </div>
 		<table class="table table-striped table-bordered">
 		    <tr>
@@ -32,7 +32,7 @@
 				<td>管理员</td>
 				<td>
 		            <a href="<?php echo site_url('admin/edit/'.$l['id']); ?>" class="btn btn-info">Edit</a> 
-		            <a href="<?php echo site_url('admin/remove/'.$l['id']); ?>" class="btn btn-danger">Delete</a>
+		            <a href="<?php echo site_url('admin/remove/'.$l['id']); ?>" class="btn btn-danger btn-delete">Delete</a>
 		        </td>
 		    </tr>
 			<?php } ?>

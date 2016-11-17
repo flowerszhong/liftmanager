@@ -10,7 +10,7 @@
 
 <div class="panel-body">
 <div class="btn-control">
-	<a href="<?php echo site_url('station/add'); ?>" class="btn btn-success">添加新站点</a> 
+	<a href="<?php echo site_url('station/add'); ?>" class="btn btn-success">新增 站点</a> 
 </div>
 
 
@@ -32,7 +32,7 @@
 		<td><?php echo $l['comments']; ?></td>
 		<td>
             <a href="<?php echo site_url('station/edit/'.$l['id']); ?>" class="btn btn-info">Edit</a> 
-            <a href="<?php echo site_url('station/remove/'.$l['id']); ?>" class="btn btn-danger">Delete</a>
+            <a href="<?php echo site_url('station/remove/'.$l['id']); ?>" class="btn btn-danger btn-delete">Delete</a>
         </td>
     </tr>
 	<?php } ?>

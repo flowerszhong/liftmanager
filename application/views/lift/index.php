@@ -10,7 +10,7 @@
 <div class="panel-body">
 
 <div class="btn-control">
-	<a href="<?php echo site_url('lift/add'); ?>" class="btn btn-success">Add</a> 
+	<a href="<?php echo site_url('lift/add'); ?>" class="btn btn-success">新增 电梯</a> 
 </div>
 
 <table class="table table-striped table-bordered">
@@ -30,17 +30,17 @@
     <tr>
 		<td><?php echo $l['id']; ?></td>
 		<td><?php echo $l['lid']; ?></td>
-		<td><?php echo $l['station']; ?></td>
-		<td><?php echo $l['substation']; ?></td>
-		<td><?php echo $l['type']; ?></td>
+		<td><?php echo $l['station1']; ?></td>
+		<td><?php echo $l['substation1']; ?></td>
+		<td><?php echo $l['type'] == ESCALATOR ? '扶梯':'垂直电梯'; ?></td>
 		<td><?php echo $l['location']; ?></td>
-		<td><?php echo $l['last_check']; ?></td>
-		<td><?php echo $l['next_check']; ?></td>
+        <td><?php echo date("Y-m-d",strtotime($l['last_check'])); ?></td>
+		<td><?php echo date("Y-m-d",strtotime($l['next_check'])); ?></td>
 		<td><?php echo $l['no96333']; ?></td>
 		<td>
 			<a href="" class="btn btn-warning btn-detail"> 详细 </a>
             <a href="<?php echo site_url('lift/edit/'.$l['id']); ?>" class="btn btn-info">Edit</a> 
-            <a href="<?php echo site_url('lift/remove/'.$l['id']); ?>" class="btn btn-danger">Delete</a>
+            <a href="<?php echo site_url('lift/remove/'.$l['id']); ?>" class="btn btn-danger btn-delete">Delete</a>
         </td>
     </tr>
     <tr class="detail">
@@ -54,11 +54,13 @@
     		<label>制造者</label><?php echo $l['manufacturer']; ?><br>
     		<label>参数</label><?php echo $l['param']; ?><br>
 			<label>配电间位置</label><?php echo $l['distribution']; ?><br>
-
     	</td>
     </tr>
 	<?php } ?>
 </table>
+
+<?php echo $links; ?>
+
 </div>
 
 </div>

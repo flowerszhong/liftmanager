@@ -7,10 +7,10 @@
 <!-- BEGIN HEAD -->
 <head>
      <meta charset="UTF-8" />
-    <title><?php echo $this->config->item('site_name'); ?></title>
+    <title><?php echo '登录' . $this->config->item('site_name','site_settings'); ?></title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-	<meta content="" name="description" />
-	<meta content="" name="author" />
+  	<meta content="" name="description" />
+  	<meta content="" name="author" />
      <!--[if IE]>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <![endif]-->
@@ -33,7 +33,9 @@
    <!-- PAGE CONTENT --> 
     <div class="container">
     <div class="text-center">
-        <img src="<?php asset_file_url('img/logo.png'); ?>" id="logoimg" alt=" Logo" />
+    <h1 class="site-name">
+      <?php echo $this->config->item('site_name','site_settings'); ?>
+    </h1>
     </div>
     <div class="tab-content">
         <div id="login" class="tab-pane active">
@@ -46,8 +48,8 @@
             <input type="text" placeholder="请输入账号..." name="name" class="form-control" value="<?php echo $this->input->post('name'); ?>" />
             <input type="password" placeholder="请输入密码..." name="password" class="form-control" value="<?php echo $this->input->post('name'); ?>" />
             
-            <?php if($error){ ?>
-            <div class="alert alert-fail">
+            <?php if(isset($error)){ ?>
+            <div class="alert alert-danger">
                <?php echo $error; ?>
             </div>
             <?php } ?>

@@ -1,0 +1,9 @@
+.form-maintenance select,
+.form-maintenance input{
+    max-width: 250px;
+}
+
+.form-maintenance textarea{
+    max-width: 600px;
+    min-height: 100px;
+}

@@ -17,7 +17,21 @@ class Lift extends MY_Controller
      */
     function index()
     {
-        $data['lm_lift'] = $this->Lift_model->get_all_lm_lift();
+        $this->load->library('pagination');
+        $config = array();
+        // $this->config->load('pagination');
+        $config["base_url"] = site_url('lift/index');
+        $config["total_rows"] = $this->Lift_model->record_count();
+        $config["per_page"] = 10;
+        $config["uri_segment"] = 3;
+        $config['use_page_numbers'] = TRUE;
+
+        $this->pagination->initialize($config);
+        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 1;
+
+        $data["lm_lift"] = $this->Lift_model->get_lifts($config["per_page"], $page);
+
+        $data["links"] = $this->pagination->create_links();
 
         $this->load->view('lift/index',$data);
     }

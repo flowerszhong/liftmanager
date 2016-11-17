@@ -15,4 +15,15 @@ $(function () {
 		$(this).parents('tr').next('.detail').toggle();
 		/* Act on the event */
 	});
+
+	$('.btn-delete').on('click', function(event) {
+		if(window.confirm('确定删除该记录?')){
+			return true;
+		}else{
+			event.preventDefault();
+			return false;
+		}
+
+		/* Act on the event */
+	});
 });

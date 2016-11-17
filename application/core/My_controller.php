@@ -9,42 +9,35 @@ class MY_Controller extends CI_Controller {
         $this->load->library('session');
         $this->load->library('form_validation');
         $this->load->model('Station_model');
-        $this->load->helper(array('form', 'url'));
-        // $this->checkLogin();
+        $this->checkLogin();
         $this->config->load('site_settings',TRUE);
         date_default_timezone_set('Asia/Chongqing');
     }
 
-    public function load_template($view_name,$view_data = null ){
-        $main_content = $this->load->view($view_name, $view_data, true);
-        $data=array('main_content'=>$main_content);
-        $this->load->view('template',$data);
-    }
-
     public function checkPermission()
     {
-        if($this->manager_power<10){
-            redirect('price/query','refresh');
+        if($this->admin_power<10){
+            redirect('lift/index','refresh');
         }
     }
 
     public function checkLogin()
     {
-        if(!$this->session->userdata('manager')){
+        if(!$this->session->userdata('admin')){
             redirect('login/index','refresh');
         }else{
-            $session_data = $this->session->userdata('manager');
-            $this->manager_id = $session_data['id'];
-            $this->manager_name = $session_data['name'];
-            $this->manager_power = $session_data['power'];
-            $this->company_id = $session_data['company_id'];
-            $this->company_name = $session_data['shortname'];
+            $session_data = $this->session->userdata('admin');
+            $this->admin_id = $session_data['id'];
+            $this->admin_name = $session_data['name'];
+            $this->display_name = $session_data['displayname'];
+            $this->admin_power = $session_data['power'];
+            $this->admin_station = $session_data['station'];
         }
     }
 
     public function isSuperAdmin()
     {
-        if($this->manager_power>10){
+        if($this->admin_power>10){
             return true;
         }else{
             return false;
