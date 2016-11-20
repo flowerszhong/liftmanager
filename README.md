@@ -9,13 +9,55 @@ a lift management system
 
 ## 权限设置
 四个管理权限
-1.小站管理员（只可查看该站信息）
-2.车间管理员（只可查看该车间信息，添加电梯信息）
-3.广州南车管理员（可查看所有车站信息，并添加管理员，添加检修信息）
-4.超级管理员（可查看所有）
+1. 小站管理员（只可查看该站信息）
+2. 车间管理员（只可查看该车间信息，添加电梯信息）
+3. 广州南车管理员（可查看所有车站信息，并添加管理员，添加检修信息）
+4. 超级管理员（可查看所有）
 
 ## 搜索功能
-电梯搜索功能
-电梯检修搜索功能
+* 电梯搜索功能
+* 电梯检修搜索功能
+
+
+
+# 系统安装
+
+## 将 liftmanager 放置 php套件的www目录下
+
+如：网站根域名如为：`http://localhost`,那么，liftmanager应用物域名应为 `http://localhost/liftmanager`
+
+
+## 设置 base_url, 在`application/config/config.php`文件下设置
+```php
+$config['base_url'] = 'http://localhost/liftmanager';
+```
+
+## 导入数据
+* 创建数据库，如，创建一个名为`gznlift`的数据库。
+* 配置数据库 `application/config/database.php`文件
+```php
+$db['default'] = array(
+	'dsn'	=> '',
+	'hostname' => 'localhost',
+	'username' => 'root',
+	'password' => '输入数据库用户密码，无为空',
+	'database' => 'gznlift',
+	'dbdriver' => 'mysqli',
+	'dbprefix' => 'lm_',
+	'pconnect' => FALSE,
+	'db_debug' => (ENVIRONMENT !== 'production'),
+	'cache_on' => FALSE,
+	'cachedir' => '',
+	'char_set' => 'utf8',
+	'dbcollat' => 'utf8_general_ci',
+	'swap_pre' => '',
+	'encrypt' => FALSE,
+	'compress' => FALSE,
+	'stricton' => FALSE,
+	'failover' => array(),
+	'save_queries' => TRUE
+);
+```
+
 
 
