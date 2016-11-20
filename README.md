@@ -33,7 +33,8 @@ $config['base_url'] = 'http://localhost/liftmanager';
 ```
 
 ## 导入数据
-* 创建数据库，如，创建一个名为`gznlift`的数据库。
+* 创建数据库，如，创建一个名为`gznlift`的数据库
+* 将`sql`目录下的数据文件导入到`gznlift`
 * 配置数据库 `application/config/database.php`文件
 ```php
 $db['default'] = array(
@@ -58,6 +59,9 @@ $db['default'] = array(
 	'save_queries' => TRUE
 );
 ```
+
+## 访问
+浏览器打开 `http://localhost/liftmanager`
 
 
 
