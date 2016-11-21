@@ -20,8 +20,6 @@
             </div>
 
             <ul id="menu" class="collapse">
-
-                
                 <li class="<?php echo activate_menu('admin') . ' panel'; ?>">
                     <a href="<?php echo site_url('admin/index'); ?>"  >
                         <i class="icon-user"></i> 管理员列表
@@ -46,8 +44,8 @@
                         <i class="icon-list-ul"></i> 检修记录
                     </a>
                 </li>
-                <li class="panel">
-                    <a href="#">
+                <li class="<?php echo activate_menu('setting') . ' panel'; ?>">
+                    <a href="<?php echo site_url('setting/index'); ?>">
                         <i class="icon-cogs"></i> 个人设置
                     </a>
                 </li>

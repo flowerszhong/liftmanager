@@ -39,8 +39,8 @@
                     <td><?php echo $l['deal']; ?></td>
                     <td><?php echo $l['status']; ?></td>
                     <td>
-                        <a href="<?php echo site_url('maintenance/edit/'.$l['id']); ?>" class="btn btn-info">Edit</a> 
-                        <a href="<?php echo site_url('maintenance/remove/'.$l['id']); ?>" class="btn btn-danger btn-delete">Delete</a>
+                        <a href="<?php echo site_url('maintenance/edit/'.$l['id']); ?>" class="btn btn-info">编辑</a> 
+                        <a href="<?php echo site_url('maintenance/remove/'.$l['id']); ?>" class="btn btn-danger btn-delete">删除</a>
                     </td>
                 </tr>
                 <?php } ?>

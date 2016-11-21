@@ -2647,3 +2647,8 @@ fieldset[disabled] .btn-grad.btn-metis-6.active {
 .pagination{
   margin-top: 0!important;
 }
+
+
+.hint{
+  color:#999;
+}

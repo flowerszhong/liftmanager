@@ -39,8 +39,8 @@
 		<td><?php echo $l['no96333']; ?></td>
 		<td>
 			<a href="" class="btn btn-warning btn-detail"> 详细 </a>
-            <a href="<?php echo site_url('lift/edit/'.$l['id']); ?>" class="btn btn-info">Edit</a> 
-            <a href="<?php echo site_url('lift/remove/'.$l['id']); ?>" class="btn btn-danger btn-delete">Delete</a>
+            <a href="<?php echo site_url('lift/edit/'.$l['id']); ?>" class="btn btn-info">编辑</a> 
+            <a href="<?php echo site_url('lift/remove/'.$l['id']); ?>" class="btn btn-danger btn-delete">删除</a>
         </td>
     </tr>
     <tr class="detail">

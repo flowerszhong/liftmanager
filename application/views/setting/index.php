@@ -5,12 +5,12 @@
 	<div class="col-lg-12">
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			账号 编辑
+			个人设置
 		</div>
 		<div class="panel-body">
 			
 			<?php echo validation_errors(); ?>
-			<?php echo form_open('admin/edit/'.$lm_admin['id'],array("class"=>"form-horizontal admin-form")); ?>
+			<?php echo form_open('setting/index',array("class"=>"form-horizontal admin-form")); ?>
 
 				<div class="form-group">
 					<label for="name" class="col-md-2 control-label">账号</label>
@@ -31,18 +31,6 @@
 					</div>
 				</div>
 				
-				<div class="form-group">
-					<label for="station" class="col-md-2 control-label">车站</label>
-					<div class="col-md-10">
-						<input type="text" name="" id="station-name" readonly="readonly" class="form-control" value="<?php echo $lm_admin['station_name']; ?>" />
-
-						<input type="hidden" name="station" value="<?php echo ($this->input->post('station') ? $this->input->post('station') : $lm_admin['station']); ?>" class="form-control" id="station" />
-
-						<input type="hidden" name="grade" value="<?php echo ($this->input->post('grade') ? $this->input->post('grade') : $lm_admin['grade']); ?>" class="form-control" id="grade" />
-
-						<?php $this->load->view('stations'); ?>
-					</div>
-				</div>
 				
 				<div class="form-group">
 					<div class="col-sm-offset-2 col-sm-10">

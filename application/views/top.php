@@ -23,9 +23,9 @@
                         </a>
 
                         <ul class="dropdown-menu dropdown-user">
-                            <li><a href="#"><i class="icon-user"></i> 个人资料 </a>
+                            <li><a href="<?php echo site_url('setting/index'); ?>"><i class="icon-user"></i> 个人资料 </a>
                             </li>
-                            <li><a href="#"><i class="icon-gear"></i> 设置 </a>
+                            <li><a href="<?php echo site_url('setting/index'); ?>"><i class="icon-gear"></i> 设置 </a>
                             </li>
                             <li class="divider"></li>
                             <li><a href="<?php echo site_url('login/logout'); ?>"><i class="icon-signout"></i> 退出登录 </a>

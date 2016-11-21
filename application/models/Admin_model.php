@@ -21,7 +21,7 @@ class Admin_model extends CI_Model
 
     function get_admin($id)
     {
-        $sql = "select a.*,b.grade,b.name from lm_admin a left join lm_station b on a.station = b.id where a.id = $id";
+        $sql = "select a.*,b.grade,b.name as station_name from lm_admin a left join lm_station b on a.station = b.id where a.id = $id";
         $query = $this->db->query($sql);
         return $query->row_array();
     }
