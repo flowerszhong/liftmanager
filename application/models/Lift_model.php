@@ -27,9 +27,21 @@ class Lift_model extends CI_Model
         return $this->db->get('lm_lift')->result_array();
     }
 
-    function record_count()
+    function record_count($post)
     {
-        return $this->db->count_all('lm_lift');
+        if(isset($post)){
+            $this->db->select('a.*,b.name as station1,c.name as substation1');
+            $this->db->from('lm_lift a');
+            $this->db->join('lm_station b','a.station=b.id');
+            $this->db->join('lm_station c','a.substation=c.id');
+            if(isset($post['station'])){
+                $this->db->where('b.id',$post['station']);
+            }
+            $query = $this->db->get();
+            return $query->num_rows();
+        }else{
+            return $this->db->count_all('lm_lift');
+        }
     }
 
 
@@ -40,14 +52,31 @@ class Lift_model extends CI_Model
         return $query->result_array();
     }
 
-    function get_lifts($limit=15,$page=1)
+    function get_lifts2($limit=15,$page=1,$post)
     {
         $start = $limit * ($page-1);
         $sql = "select a.*,b.name station1,c.name substation1 from lm_lift a, lm_station b,lm_station c where a.station=b.id and a.substation = c.id LIMIT $start,$limit";
         $query = $this->db->query($sql);
         return $query->result_array();
     }
-    
+
+
+    function get_lifts($limit=15,$page=1,$post)
+    {
+        $offset = ($page-1) * $limit;
+        $this->db->select('a.*,b.name as station1,c.name as substation1');
+        $this->db->from('lm_lift a');
+        $this->db->join('lm_station b','a.station=b.id');
+        $this->db->join('lm_station c','a.substation=c.id');
+
+        if(isset($post['station'])){
+            $this->db->where('b.id',$post['station']);
+        }
+        $this->db->limit($limit,$offset);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
     /*
      * function to add new lm_lift
      */

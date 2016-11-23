@@ -17,21 +17,30 @@ class Lift extends MY_Controller
      */
     function index()
     {
+        $post = $this->input->post();
+
         $this->load->library('pagination');
         $config = array();
         // $this->config->load('pagination');
         $config["base_url"] = site_url('lift/index');
-        $config["total_rows"] = $this->Lift_model->record_count();
+        $config["total_rows"] = $this->Lift_model->record_count($post);
         $config["per_page"] = 10;
         $config["uri_segment"] = 3;
         $config['use_page_numbers'] = TRUE;
 
+
         $this->pagination->initialize($config);
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 1;
 
-        $data["lm_lift"] = $this->Lift_model->get_lifts($config["per_page"], $page);
+        $data["lm_lift"] = $this->Lift_model->get_lifts($config["per_page"], $page, $post);
 
         $data["links"] = $this->pagination->create_links();
+
+        $stations = $this->Station_model->get_station_by_grade(STATION);
+        $sub_stations = $this->Station_model->get_station_by_grade(SUB_STATION);
+
+        $data['stations'] = $stations;
+        $data['sub_stations'] = $sub_stations;
 
         $this->load->view('lift/index',$data);
     }
@@ -100,7 +109,7 @@ class Lift extends MY_Controller
 			$this->form_validation->set_rules('station','Station','required');
 			$this->form_validation->set_rules('type','Type','required');
 			$this->form_validation->set_rules('vin','Vin','required');
-			$this->form_validation->set_rules('location','Location','required');
+			$this->form_validation->set_rules('location','Location','required|max_length[20]');
 			$this->form_validation->set_rules('no96333','No96333','required');
 		
 			if($this->form_validation->run())     

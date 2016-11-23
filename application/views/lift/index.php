@@ -13,6 +13,67 @@
 	<a href="<?php echo site_url('lift/add'); ?>" class="btn btn-success">新增 电梯</a> 
 </div>
 
+<?php echo form_open('lift/index/',array("class"=>"form-horizontal lift-form")); ?>
+<table class="table table-striped table-bordered">
+<tr>
+    <td width="160">内部编码</td>
+    <td><input type="text" class="form-control" name="lid" /></td>
+</tr>
+
+<tr>
+    <td width="160">主站</td>
+    <td>
+
+    <select name="station" class="form-control">
+        <option value="">请选择主站</option>
+        <?php 
+        foreach($stations as $station)
+        {
+            $selected = $station['id'] == $this->input->post('station')?'selected':'';
+            echo '<option value="'.$station['id'].'" '.$selected.' >'.$station['name'].'</option>';
+        } 
+        ?>
+    </select>
+
+    </td>
+</tr>
+
+<tr>
+    
+</tr>
+
+<tr>
+    <td width="160">子站</td>
+    <td>
+    <select name="substation" class="form-control">
+        <option value="">请选择子站</option>
+        <?php 
+        foreach($sub_stations as $sub_station)
+        {
+            $selected = $sub_station['id'] == $this->input->post('substation')?'selected':'';
+            echo '<option value="'.$sub_station['id'].'" '. $selected .' >'.$sub_station['name'].'</option>';
+        } 
+        ?>
+    </select>
+    </td>
+</tr>
+
+<tr>
+    <td width="160">96333编号</td>
+    <td><input type="text" class="form-control" name="lid" /></td>
+</tr>
+<tr>
+    <td></td>
+    <td>
+        <input type="submit" value="搜索" class="btn btn-danger" >
+    </td>
+</tr>
+</table>
+
+            <?php echo form_close(); ?>
+
+
+
 <table class="table table-striped table-bordered">
     <tr>
 		<th>序号</th>
