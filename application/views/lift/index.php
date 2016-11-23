@@ -13,11 +13,11 @@
 	<a href="<?php echo site_url('lift/add'); ?>" class="btn btn-success">新增 电梯</a> 
 </div>
 
-<?php echo form_open('lift/index/',array("class"=>"form-horizontal lift-form")); ?>
+<?php echo form_open('lift/index',array("class"=>"form-horizontal lift-form")); ?>
 <table class="table table-striped table-bordered">
 <tr>
     <td width="160">内部编码</td>
-    <td><input type="text" class="form-control" name="lid" /></td>
+    <td><input type="text" class="form-control" name="lid" value="<?php echo $this->input->post('lid'); ?>" /></td>
 </tr>
 
 <tr>
@@ -60,7 +60,7 @@
 
 <tr>
     <td width="160">96333编号</td>
-    <td><input type="text" class="form-control" name="lid" /></td>
+    <td><input type="text" class="form-control" name="no96333" /></td>
 </tr>
 <tr>
     <td></td>
@@ -70,7 +70,7 @@
 </tr>
 </table>
 
-            <?php echo form_close(); ?>
+ <?php echo form_close(); ?>
 
 
 

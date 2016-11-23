@@ -20,7 +20,7 @@
 				<div class="form-group">
 					<label for="station" class="col-md-2 control-label">车站</label>
 					<div class="col-md-10">
-						<select name="station" class="form-control">
+						<select name="station" id="station" class="form-control">
 							<option value="">请选择主站</option>
 							<?php 
 							foreach($stations as $station)
@@ -35,7 +35,7 @@
 				<div class="form-group">
 					<label for="substation" class="col-md-2 control-label">子站</label>
 					<div class="col-md-10">
-						<select name="substation" class="form-control">
+						<select name="substation" id="substation" class="form-control">
 							<option value="">请选择子站</option>
 							<?php 
 							foreach($sub_stations as $sub_station)
@@ -54,8 +54,8 @@
 								<option value="">请选择电梯类型</option>
 								<?php 
 								$type_values = array(
-									'1'=>'垂直电梯',
-									'2'=>'扶梯',
+									'1'=>'扶梯',
+									'2'=>'垂直电梯',
 								);
 
 								foreach($type_values as $value => $display_text)

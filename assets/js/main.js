@@ -26,4 +26,31 @@ $(function () {
 
 		/* Act on the event */
 	});
+
+	$('#station').on('change', function() {
+		if(this.value!=''){
+			filter_substation(this.value);
+		}else{
+			reset_substation();
+		}
+		/* Act on the event */
+	});
+
+	function filter_substation(parent_id) {
+		var $options = $('#substation').find('option');
+		$options.each(function(index, el) {
+			var pid = $(el).attr('data-parent');
+			if(pid == parent_id){
+				$(el).removeAttr('disabled');
+			}else{
+				$(el).attr('disabled','disabled');
+			}
+		});
+
+	}
+
+	function reset_substation() {
+		$('#substation').find('option').removeAttr('disabled');
+	}
+
 });

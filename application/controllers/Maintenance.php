@@ -29,11 +29,11 @@ class Maintenance extends MY_Controller
     {   
         $this->load->library('form_validation');
 
-		$this->form_validation->set_rules('lid','Lid','required');
-		$this->form_validation->set_rules('maintenance_man','Maintenance Man','required|max_length[24]');
-		$this->form_validation->set_rules('check_date','Check Date','required');
-		$this->form_validation->set_rules('problem','Problem','required');
-		$this->form_validation->set_rules('cause','Cause','required');
+		$this->form_validation->set_rules('lid','电梯内部编号','required');
+		$this->form_validation->set_rules('maintenance_man','检查人','required|max_length[24]');
+		$this->form_validation->set_rules('check_date','检查日期','required');
+		$this->form_validation->set_rules('problem','发现问题','required');
+		$this->form_validation->set_rules('cause','原因分析','required');
 		
 		if($this->form_validation->run())     
         {   

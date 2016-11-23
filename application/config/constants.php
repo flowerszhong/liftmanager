@@ -83,12 +83,17 @@ defined('EXIT_USER_INPUT')     OR define('EXIT_USER_INPUT', 7); // invalid user 
 defined('EXIT_DATABASE')       OR define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
-defined('FILE_TIMESTAMP')      or define('FILE_TIMESTAMP',5254556);
+defined('FILE_TIMESTAMP')      or define('FILE_TIMESTAMP',555);
 
 //station level
 defined('STATION')             or define('STATION',10);
 defined('SUB_STATION')         or define('SUB_STATION',1);
 defined('ESCALATOR')           or define('ESCALATOR',1);
 defined('VERTICAL_LIFT')       or define('VERTICAL_LIFT',2);
+
+
+defined('M_STATE_NORMAL')      or define('M_STATE_NORMAL',2);
+defined('M_STATE_PROBLEM')     or define('M_STATE_PROBLEM',4);
+defined('M_STATE_SOVLED')      or define('M_STATE_SOVLED',6);
 
 

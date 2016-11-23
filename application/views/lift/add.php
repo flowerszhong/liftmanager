@@ -22,7 +22,7 @@
 							<label for="station" class="col-md-2 control-label">车站</label>
 							<div class="col-md-10">
 
-								<select name="station" class="form-control">
+								<select name="station" id="station" class="form-control">
 									<option value="">请选择主站</option>
 									<?php 
 									foreach($stations as $station)
@@ -36,12 +36,12 @@
 						<div class="form-group">
 							<label for="substation" class="col-md-2 control-label">子站</label>
 							<div class="col-md-10">
-									<select name="substation" class="form-control">
+									<select name="substation" id="substation" class="form-control">
 										<option value="">请选择子站</option>
 										<?php 
 										foreach($sub_stations as $sub_station)
 										{
-											echo '<option value="'.$sub_station['id'].'">'.$sub_station['name'].'</option>';
+											echo '<option data-parent="'. $sub_station['parent'] .'" value="'.$sub_station['id'].'">'.$sub_station['name'].'</option>';
 										} 
 										?>
 									</select>
@@ -54,8 +54,8 @@
 										<option value="">选择电梯类型</option>
 										<?php 
 										$type_values = array(
-											'1'=>'垂直电梯',
-											'2'=>'扶梯',
+											'1'=>'扶梯',
+											'2'=>'垂直电梯',
 										);
 
 										foreach($type_values as $value => $display_text)
@@ -84,21 +84,6 @@
 								<label for="location" class="col-md-2 control-label">安装位置</label>
 								<div class="col-md-10">
 								<input type="text" name="location" value="<?php echo $this->input->post('location'); ?>" class="form-control" id="" />
-									<select name="" class="form-control">
-										<option value="">请选择安装位置</option>
-
-										<?php 
-										$location_values = array(
-										);
-
-										foreach($location_values as $value => $display_text)
-										{
-											$selected = ($value == $this->input->post('location')) ? ' selected="selected"' : null;
-
-											echo '<option value="'.$value.'" '.$selected.'>'.$display_text.'</option>';
-										} 
-										?>
-									</select>
 								</div>
 							</div>
 						<div class="form-group">
@@ -122,7 +107,7 @@
 						<div class="form-group">
 							<label for="production_date" class="col-md-2 control-label">出厂日期</label>
 							<div class="col-md-10">
-								<input type="text" name="production_date" value="<?php echo $this->input->post('production_date'); ?>" class="form-control" id="production_date" />
+								<input type="date" name="production_date" value="<?php echo $this->input->post('production_date'); ?>" class="form-control" id="production_date" />
 							</div>
 						</div>
 						<div class="form-group">
@@ -140,13 +125,13 @@
 						<div class="form-group">
 							<label for="last_check" class="col-md-2 control-label">上次检验日期</label>
 							<div class="col-md-10">
-								<input type="text" name="last_check" value="<?php echo $this->input->post('last_check'); ?>" class="form-control" id="last_check" />
+								<input type="date" name="last_check" value="<?php echo $this->input->post('last_check'); ?>" class="form-control" id="last_check" />
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="next_check" class="col-md-2 control-label">下次检验日期</label>
 							<div class="col-md-10">
-								<input type="text" name="next_check" value="<?php echo $this->input->post('next_check'); ?>" class="form-control" id="next_check" />
+								<input type="date" name="next_check" value="<?php echo $this->input->post('next_check'); ?>" class="form-control" id="next_check" />
 							</div>
 						</div>
 						<div class="form-group">
@@ -164,7 +149,7 @@
 						
 						<div class="form-group">
 							<div class="col-sm-offset-2 col-sm-10">
-								<button type="submit" class="btn btn-success">Save</button>
+								<button type="submit" class="btn btn-success">保存</button>
 					        </div>
 						</div>
 

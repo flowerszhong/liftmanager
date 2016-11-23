@@ -81,7 +81,10 @@
 				<div class="form-group">
 					<label for="status" class="col-md-2 control-label">整改情况</label>
 					<div class="col-md-10">
-						<input type="text" name="status" value="<?php echo $this->input->post('status'); ?>" class="form-control" id="status" />
+						<?php echo form_radio('status', M_STATE_NORMAL, FALSE); 
+						 echo form_label('正常检修，未发现问题', 'status'); ?>
+						<?php echo form_radio('status', M_STATE_PROBLEM, TRUE); 
+						 echo form_label('发现问题，正在整改', 'status'); ?>
 					</div>
 				</div>
 				

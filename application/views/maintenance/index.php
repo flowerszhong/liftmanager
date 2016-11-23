@@ -37,7 +37,18 @@
                     <td><?php echo $l['charge_man']; ?></td>
                     <td><?php echo $l['deadline']; ?></td>
                     <td><?php echo $l['deal']; ?></td>
-                    <td><?php echo $l['status']; ?></td>
+                    <td><?php 
+
+                    if($l['status'] == M_STATE_NORMAL){
+                        echo '正常检修，未发现问题';
+                    }else if($l['status'] == M_STATE_PROBLEM){
+                        echo '发现问题，正在整改';
+                    }else if($l['status'] == M_STATE_SOVLED){
+                        echo '整改完成，问题处理完成';
+                    }else{
+                        echo '状态不明';
+                    }
+                    ?></td>
                     <td>
                         <a href="<?php echo site_url('maintenance/edit/'.$l['id']); ?>" class="btn btn-info">编辑</a> 
                         <a href="<?php echo site_url('maintenance/remove/'.$l['id']); ?>" class="btn btn-danger btn-delete">删除</a>

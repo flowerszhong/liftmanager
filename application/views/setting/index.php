@@ -28,8 +28,15 @@
 					<label for="pwd" class="col-md-2 control-label">密码</label>
 					<div class="col-md-10">
 						<input type="text" name="pwd" value="<?php echo $this->input->post('pwd'); ?>" class="form-control" id="pwd" /> <span class="hint">(密码不能少于6位字母或数字，为空为不修改密码)</span>
+						<?php if(isset($msg)){ ?>
+						<div class="alert alert-success">
+							<?php echo $msg; ?>
+						</div>
+						<?php } ?>
 					</div>
 				</div>
+
+
 				
 				
 				<div class="form-group">
@@ -37,6 +44,9 @@
 						<button type="submit" class="btn btn-success">保存</button>
 			        </div>
 				</div>
+
+				
+				
 				
 			<?php echo form_close(); ?>
 		</div>

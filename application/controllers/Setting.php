@@ -47,14 +47,14 @@ class Setting extends MY_Controller
                     $params['pwd'] = $pwd;
                 }
 
-                $this->Admin_model->update_lm_admin($id,$params);            
-                redirect('setting/index');
+                $id = $lm_admin['id'];
+                $this->Admin_model->update_lm_admin($id,$params); 
+                $data['msg'] = "编辑成功";
+                $this->load->view('setting/index',$data);           
             }
             else
             {   
                 $data['lm_admin'] = $lm_admin;
-                $data['stations'] = $this->Station_model->get_all_lm_station();
-    
                 $this->load->view('setting/index',$data);
             }
         }

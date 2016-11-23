@@ -18,7 +18,6 @@ class Lift extends MY_Controller
     function index()
     {
         $post = $this->input->post();
-
         $this->load->library('pagination');
         $config = array();
         // $this->config->load('pagination');
@@ -52,12 +51,12 @@ class Lift extends MY_Controller
     {   
         $this->load->library('form_validation');
 
-		$this->form_validation->set_rules('lid','Lid','required');
-		$this->form_validation->set_rules('station','Station','required');
-		$this->form_validation->set_rules('type','Type','required');
-		$this->form_validation->set_rules('vin','Vin','required');
-		$this->form_validation->set_rules('location','Location','required');
-		$this->form_validation->set_rules('no96333','No96333','required');
+		$this->form_validation->set_rules('lid','内部编号','required');
+		$this->form_validation->set_rules('station','主站','required');
+		$this->form_validation->set_rules('type','电梯类型','required');
+		$this->form_validation->set_rules('vin','设备代码','required');
+		$this->form_validation->set_rules('location','安装位置','required');
+		$this->form_validation->set_rules('no96333','No96333编号','required');
 		
 		if($this->form_validation->run())     
         {   

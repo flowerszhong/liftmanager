@@ -34,9 +34,7 @@ class Lift_model extends CI_Model
             $this->db->from('lm_lift a');
             $this->db->join('lm_station b','a.station=b.id');
             $this->db->join('lm_station c','a.substation=c.id');
-            if(isset($post['station'])){
-                $this->db->where('b.id',$post['station']);
-            }
+            $this->lift_query_param($post);
             $query = $this->db->get();
             return $query->num_rows();
         }else{
@@ -60,6 +58,24 @@ class Lift_model extends CI_Model
         return $query->result_array();
     }
 
+    function lift_query_param($post){
+        if(isset($post['station']) and !empty($post['station'])){
+                $this->db->where('b.id',$post['station']);
+        }
+
+        if(isset($post['substation']) and !empty($post['substation'])){
+                $this->db->where('c.id',$post['substation']);
+        }
+
+        if(isset($post['lid']) and !empty($post['lid'])){
+            $this->db->like('a.lid',$post['lid']);
+        }
+
+        if(isset($post['no96333']) and !empty($post['no96333'])){
+            $this->db->where('a.no96333',$post['no96333']);
+        }
+    }
+
 
     function get_lifts($limit=15,$page=1,$post)
     {
@@ -68,11 +84,9 @@ class Lift_model extends CI_Model
         $this->db->from('lm_lift a');
         $this->db->join('lm_station b','a.station=b.id');
         $this->db->join('lm_station c','a.substation=c.id');
-
-        if(isset($post['station'])){
-            $this->db->where('b.id',$post['station']);
-        }
+        $this->lift_query_param($post);
         $this->db->limit($limit,$offset);
+        $this->db->order_by('a.id','desc');
         $query = $this->db->get();
         return $query->result_array();
     }
