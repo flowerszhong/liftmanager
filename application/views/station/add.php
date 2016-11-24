@@ -20,16 +20,16 @@
 	<div class="form-group">
 		<label for="grade" class="col-md-2 control-label">车站类别</label>
 		<div class="col-md-10">
-			<?php echo form_radio('grade', '10', FALSE); 
+			<?php echo form_radio('grade', '10', FALSE,array("id"=>"station_main")); 
 			 echo form_label('主站', 'grade'); ?>
-			<?php echo form_radio('grade', '1', TRUE); 
+			<?php echo form_radio('grade', '1', TRUE,array("id"=>"station_sub")); 
 			 echo form_label('子站', 'grade'); ?>
 		</div>
 	</div>
-	<div class="form-group">
+	<div class="form-group"  id="mainstation-row">
 		<label for="parent" class="col-md-2 control-label">主站</label>
 		<div class="col-md-10">
-			<select name="parent" class="form-control">
+			<select name="parent" id="station-parent" class="form-control">
 				<option value="">请选择主站</option>
 				<?php 
 				foreach($stations as $station)

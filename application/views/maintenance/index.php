@@ -51,7 +51,9 @@
                     ?></td>
                     <td>
                         <a href="<?php echo site_url('maintenance/edit/'.$l['id']); ?>" class="btn btn-info">编辑</a> 
+                        <?php if($this->admin_power>10){ ?>
                         <a href="<?php echo site_url('maintenance/remove/'.$l['id']); ?>" class="btn btn-danger btn-delete">删除</a>
+                        <?php } ?>
                     </td>
                 </tr>
                 <?php } ?>

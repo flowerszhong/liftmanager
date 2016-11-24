@@ -53,4 +53,22 @@ $(function () {
 		$('#substation').find('option').removeAttr('disabled');
 	}
 
+
+	$('#station_main').on('change', function() {
+		if(this.checked){
+			$("#mainstation-row").hide();
+			$('#station-parent').val('');
+		}else{
+			$("#mainstation-row").show();
+		}
+	});	
+
+	$('#station_sub').on('change', function() {
+		if(this.checked){
+			$("#mainstation-row").show();
+		}else{
+			$("#mainstation-row").hide();
+		}
+	});	
+
 });

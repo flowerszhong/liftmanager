@@ -31,8 +31,11 @@
 				<td><?php echo $l['station_name']; ?></td>
 				<td>管理员</td>
 				<td>
-		            <a href="<?php echo site_url('admin/edit/'.$l['id']); ?>" class="btn btn-info">编辑</a> 
-		            <a href="<?php echo site_url('admin/remove/'.$l['id']); ?>" class="btn btn-danger btn-delete">删除</a>
+					<a href="<?php echo site_url('admin/edit/'.$l['id']); ?>" class="btn btn-info">编辑</a> 
+					<?php if($this->admin_power>10){ ?>
+						<a href="<?php echo site_url('admin/remove/'.$l['id']); ?>" class="btn btn-danger btn-delete">删除</a>
+					<?php } ?>
+		            
 		        </td>
 		    </tr>
 			<?php } ?>

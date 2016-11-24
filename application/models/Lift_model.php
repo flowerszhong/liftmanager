@@ -71,6 +71,10 @@ class Lift_model extends CI_Model
             $this->db->like('a.lid',$post['lid']);
         }
 
+        if(isset($post['location']) and !empty($post['location'])){
+            $this->db->like('a.location',$post['location']);
+        }
+
         if(isset($post['no96333']) and !empty($post['no96333'])){
             $this->db->where('a.no96333',$post['no96333']);
         }

@@ -58,6 +58,11 @@
     </td>
 </tr>
 
+
+<tr>
+    <td width="160">安装位置</td>
+    <td><input type="text" class="form-control" name="location" value="<?php echo $this->input->post('location'); ?>" /></td>
+</tr>
 <tr>
     <td width="160">96333编号</td>
     <td><input type="text" class="form-control" name="no96333" /></td>

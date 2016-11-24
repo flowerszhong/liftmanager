@@ -20,6 +20,8 @@
             </div>
 
             <ul id="menu" class="collapse">
+                <?php if($this->admin_power>1){ ?>
+
                 <li class="<?php echo activate_menu('admin') . ' panel'; ?>">
                     <a href="<?php echo site_url('admin/index'); ?>"  >
                         <i class="icon-user"></i> 管理员列表
@@ -38,6 +40,9 @@
                         <i class="icon-list-ol"></i> 电梯管理
                     </a>
                 </li>
+
+                <?php } ?>
+                
 
                 <li class="<?php echo activate_menu('maintenance') . ' panel'; ?>">
                     <a href="<?php echo site_url('maintenance/index'); ?>">
