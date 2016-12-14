@@ -9,6 +9,7 @@ class Admin extends MY_Controller
     function __construct()
     {
         parent::__construct();
+        $this->checkPermission();
         $this->load->model('Admin_model');
     } 
 

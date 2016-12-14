@@ -41,7 +41,7 @@
 							foreach($sub_stations as $sub_station)
 							{
 								$selected = $sub_station['id'] == $lm_lift['substation']?'selected':'';
-								echo '<option value="'.$sub_station['id'].'" '. $selected .' >'.$sub_station['name'].'</option>';
+								echo '<option data-parent="'. $sub_station['parent'] .'" value="'.$sub_station['id'].'" '. $selected .' >'.$sub_station['name'].'</option>';
 							} 
 							?>
 						</select>

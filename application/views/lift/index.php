@@ -24,7 +24,7 @@
     <td width="160">主站</td>
     <td>
 
-    <select name="station" class="form-control">
+    <select name="station" class="form-control" id="station">
         <option value="">请选择主站</option>
         <?php 
         foreach($stations as $station)
@@ -45,19 +45,24 @@
 <tr>
     <td width="160">子站</td>
     <td>
-    <select name="substation" class="form-control">
+    <select name="substation" class="form-control" id="substation">
         <option value="">请选择子站</option>
         <?php 
         foreach($sub_stations as $sub_station)
         {
             $selected = $sub_station['id'] == $this->input->post('substation')?'selected':'';
-            echo '<option value="'.$sub_station['id'].'" '. $selected .' >'.$sub_station['name'].'</option>';
+            echo '<option data-parent="'. $sub_station['parent'] .'" value="'.$sub_station['id'].'" '. $selected .' >'.$sub_station['name'].'</option>';
         } 
         ?>
     </select>
     </td>
 </tr>
 
+
+<tr>
+    <td width="160">安装位置</td>
+    <td><input type="text" class="form-control" name="location" value="<?php echo $this->input->post('location'); ?>" /></td>
+</tr>
 <tr>
     <td width="160">96333编号</td>
     <td><input type="text" class="form-control" name="no96333" /></td>

@@ -9,7 +9,7 @@ class Station extends MY_Controller
     function __construct()
     {
         parent::__construct();
-        $this->load->model('Station_model');
+        $this->checkPermission();
     } 
 
     /*

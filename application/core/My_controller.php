@@ -17,7 +17,7 @@ class MY_Controller extends CI_Controller {
     public function checkPermission()
     {
         if($this->admin_power<10){
-            redirect('lift/index','refresh');
+            redirect('maintenance/index','refresh');
         }
     }
 
@@ -35,7 +35,16 @@ class MY_Controller extends CI_Controller {
         }
     }
 
-    public function isSuperAdmin()
+    public function is_main_admin()
+    {
+        if($this->admin_power>1){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function is_super_admin()
     {
         if($this->admin_power>10){
             return true;
