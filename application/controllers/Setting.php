@@ -37,8 +37,8 @@ class Setting extends MY_Controller
                 );
 
                 $pwd = $post['pwd'];
-
-                if(!empty(trim($pwd))){
+                $pwd = trim($pwd);
+                if(!empty($pwd)){
                     $salt1 = rand(1,9999);
                     $salt2 = rand(1000,9999);
                     $pwd = sha1($salt2. $salt2 . $pwd);
