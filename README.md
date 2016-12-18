@@ -35,6 +35,7 @@ $config['base_url'] = 'http://localhost/liftmanager';
 
 ## 开启`mod_rewrite` url 重定向模块
 修改 `httpd.conf` 文件，大致路径：`D:\wamp\bin\apache\apache2.4.9\conf`
+重启apache服务器
 
 ## 导入数据
 * 创建数据库，如，创建一个名为`gznlift`的数据库
