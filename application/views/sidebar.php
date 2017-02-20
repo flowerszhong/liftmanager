@@ -46,7 +46,21 @@
 
                 <li class="<?php echo activate_menu('maintenance') . ' panel'; ?>">
                     <a href="<?php echo site_url('maintenance/index'); ?>">
-                        <i class="icon-list-ul"></i> 检修记录
+                        <i class="icon-list-ul"></i> 扶梯基础资料
+                    </a>
+                </li>
+
+
+                <li class="<?php echo activate_menu('maintenance') . ' panel'; ?>">
+                    <a href="<?php echo site_url('maintenance/index'); ?>">
+                        <i class="icon-list-ul"></i> 垂直电梯基础资料
+                    </a>
+                </li>
+
+
+                <li class="<?php echo activate_menu('maintenance') . ' panel'; ?>">
+                    <a href="<?php echo site_url('maintenance/index'); ?>">
+                        <i class="icon-list-ul"></i> 电梯故障维修记录
                     </a>
                 </li>
                 <li class="<?php echo activate_menu('setting') . ' panel'; ?>">
