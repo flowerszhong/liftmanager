@@ -44,15 +44,15 @@
                 <?php } ?>
                 
 
-                <li class="<?php echo activate_menu('maintenance') . ' panel'; ?>">
-                    <a href="<?php echo site_url('maintenance/index'); ?>">
+                <li class="<?php echo activate_menu('escalator') . ' panel'; ?>">
+                    <a href="<?php echo site_url('escalator/index'); ?>">
                         <i class="icon-list-ul"></i> 扶梯基础资料
                     </a>
                 </li>
 
 
-                <li class="<?php echo activate_menu('maintenance') . ' panel'; ?>">
-                    <a href="<?php echo site_url('maintenance/index'); ?>">
+                <li class="<?php echo activate_menu('elevator') . ' panel'; ?>">
+                    <a href="<?php echo site_url('elevator/index'); ?>">
                         <i class="icon-list-ul"></i> 垂直电梯基础资料
                     </a>
                 </li>
