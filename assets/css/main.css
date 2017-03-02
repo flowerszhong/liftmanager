@@ -2652,3 +2652,27 @@ fieldset[disabled] .btn-grad.btn-metis-6.active {
 .hint{
   color:#999;
 }
+
+.form-groups{
+  padding: 5px 0 5px 0;
+  border-radius: 5px;
+}
+
+.form-groups-style1{
+  background-color: #eee;
+}
+.form-groups-style2{
+  background-color: lightyellow;
+}
+
+.form-groups-style3{
+  background-color: lightpink;
+}
+
+.form-groups-style4{
+  background-color: #DDDDDD;
+}
+
+.form-groups-style5{
+  background-color: #7FDBFF;
+}
