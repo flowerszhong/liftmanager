@@ -1,3 +1,18 @@
+.escalator-edit-form input,
+.escalator-query-form input,
 .escalator-add-form input{
 	max-width: 300px;
+}
+
+.escalator-query-form{
+	clear: both;
+}
+
+.table-index{
+	clear: both;
+	margin-top: 20px;
+}
+.table-index th{
+	text-align: center;
+	vertical-align: middle;
 }

@@ -1,5 +1,6 @@
 
 <?php $this->load->view('header'); ?>
+<link rel="stylesheet" href="<?php echo asset_file_url('css/escalator.css'); ?>" />
 
 <div class="row">
 	<div class="col-lg-12">
@@ -11,8 +12,10 @@
 			<div class="pull-left">
 				<a href="<?php echo site_url('escalator/add'); ?>" class="btn btn-success">新增加扶梯</a> 
 			</div>
+			
+			<?php $this->load->view('escalator/query'); ?>
 
-			<table class="table table-striped table-bordered">
+			<table class="table table-striped table-bordered table-index">
 			    <tr>
 					<th rowspan="2">编号</th>
 					<th rowspan="2">位置</th>
@@ -40,7 +43,6 @@
 			    </tr>
 				<?php foreach($escalator as $l){ ?>
 			    <tr>
-					<td><?php echo $l['id']; ?></td>
 					<td><?php echo $l['lid']; ?></td>
 					<td><?php echo $l['location']; ?></td>
 					<td><?php echo $l['product_code']; ?></td>
@@ -55,6 +57,7 @@
 					<td><?php echo $l['register_com']; ?></td>
 					<td><?php echo $l['register_maker']; ?></td>
 					<td>
+			            <a href="<?php echo site_url('escalator/view/'.$l['id']); ?>" class="btn btn-info">查看</a> 
 			            <a href="<?php echo site_url('escalator/edit/'.$l['id']); ?>" class="btn btn-info">Edit</a> 
 			            <a href="<?php echo site_url('escalator/remove/'.$l['id']); ?>" class="btn btn-danger">Delete</a>
 			        </td>

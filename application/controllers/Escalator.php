@@ -134,6 +134,13 @@ class Escalator extends MY_Controller
             show_error('The escalator you are trying to edit does not exist.');
     } 
 
+
+    public function view($id)
+    {
+        $data['escalator'] = $this->Escalator_model->get_escalator($id);
+        $this->load->view('escalator/detail',$data);
+    }
+
     /*
      * Deleting escalator
      */
