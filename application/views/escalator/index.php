@@ -9,8 +9,9 @@
 			扶梯列表
 		</div>
 		<div class="panel-body">
-			<div class="pull-left">
-				<a href="<?php echo site_url('escalator/add'); ?>" class="btn btn-success">新增加扶梯</a> 
+			<div class="pull-left clearfix">
+				<a href="#" class="btn btn-success" id="btn-search">查询</a> 
+				<a href="<?php echo site_url('escalator/add'); ?>" class="btn btn-primary">新增加扶梯</a> 
 			</div>
 			
 			<?php $this->load->view('escalator/query'); ?>
@@ -21,8 +22,6 @@
 					<th rowspan="2">位置</th>
 					<th colspan="6">产品合格证</th>
 					<th colspan="4">使用登记证</th>
-					
-					
 					<th rowspan="2">操作</th>
 			    </tr>
 			    <tr>
@@ -32,14 +31,10 @@
 			    	<th>检验单位</th>
 			    	<th>检验人员</th>
 			    	<th>下次检验日期</th>
-
-
 			    	<th>使用证编号</th>
 			    	<th>注册代码</th>
 			    	<th>使用单位</th>
 			    	<th>制造单位</th>
-
-
 			    </tr>
 				<?php foreach($escalator as $l){ ?>
 			    <tr>
@@ -58,12 +53,16 @@
 					<td><?php echo $l['register_maker']; ?></td>
 					<td>
 			            <a href="<?php echo site_url('escalator/view/'.$l['id']); ?>" class="btn btn-info">查看</a> 
-			            <a href="<?php echo site_url('escalator/edit/'.$l['id']); ?>" class="btn btn-info">Edit</a> 
-			            <a href="<?php echo site_url('escalator/remove/'.$l['id']); ?>" class="btn btn-danger">Delete</a>
+			            <a href="<?php echo site_url('escalator/edit/'.$l['id']); ?>" class="btn btn-info">编辑</a> 
+			            <a href="<?php echo site_url('escalator/remove/'.$l['id']); ?>" class="btn btn-danger">删除</a>
 			        </td>
 			    </tr>
 				<?php } ?>
 			</table>
+
+			<?php if($this->pagination){
+					echo $this->pagination->create_links();
+				} ?>
 		</div>
 	</div>
 		

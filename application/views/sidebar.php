@@ -63,6 +63,12 @@
                         <i class="icon-list-ul"></i> 电梯故障维修记录
                     </a>
                 </li>
+
+                <li class="<?php echo activate_menu('report') . ' panel'; ?>">
+                    <a href="<?php echo site_url('report/index'); ?>">
+                        <i class="icon-list-ul"></i> 电梯年度验收检验报告
+                    </a>
+                </li>
                 <li class="<?php echo activate_menu('setting') . ' panel'; ?>">
                     <a href="<?php echo site_url('setting/index'); ?>">
                         <i class="icon-cogs"></i> 个人设置

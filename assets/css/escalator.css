@@ -16,3 +16,24 @@
 	text-align: center;
 	vertical-align: middle;
 }
+
+.panel-search{
+	margin-top: 40px;
+	display: none;
+}
+
+h3.sub-title{
+	font-size: 16px;
+	margin-top: 0;
+	margin-bottom: 0;
+	color:#000;
+}
+
+h3.sub-title span{
+	font-size: 12px;
+	color:gray;
+}
+
+.sub-panel .panel-body{
+	display: none;
+}

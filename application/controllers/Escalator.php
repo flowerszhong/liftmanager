@@ -17,8 +17,12 @@ class Escalator extends MY_Controller
      */
     function index()
     {
-        $data['escalator'] = $this->Escalator_model->get_all_escalator();
 
+        $get = $this->input->get();
+        $base_url = site_url( 'escalator/index', null );
+        $config = $this->config_pagination($base_url,$get);
+        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+        $data['escalator'] = $this->Escalator_model->record_query($get,$config['per_page'],$page);
         $this->load->view('escalator/index',$data);
     }
 
@@ -157,5 +161,28 @@ class Escalator extends MY_Controller
         else
             show_error('The escalator you are trying to delete does not exist.');
     }
+
+    public function config_pagination($base_url,$get)
+    {
+        $this->load->library('pagination');
+        $config = array();
+        // $this->config->load('pagination');
+        $config["base_url"] = $base_url;
+        if (count($get) > 0) {
+            $config['suffix'] = '?' . http_build_query($get, '', "&");
+        }
+        $config['first_url'] = $base_url . '?' . http_build_query($get, '', "&");
+        $config["total_rows"] = $this->Escalator_model->record_count($get);
+        $config["per_page"] = 3;
+        $config["uri_segment"] = 3;
+        $config['use_page_numbers'] = TRUE;
+
+        $this->pagination->initialize($config);
+
+        return $config;
+    }
+
+
+
     
 }

@@ -155,3 +155,18 @@ create table if not exists lm_elevator(
 	-- 车站信息
 	station_id int
 )
+
+
+-- 报告 report
+create table if not exists report(
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	lid varchar(15) not null,
+	doc varchar(120),
+	-- 提交人	
+	submitor varchar(20),
+	
+	-- 提交时间	
+	submit_date date,
+	-- 更新时间	
+	update_date date
+);

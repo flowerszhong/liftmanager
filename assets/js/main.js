@@ -71,4 +71,14 @@ $(function () {
 		}
 	});	
 
+
+	$('#btn-search').on('click', function(event) {
+		event.preventDefault();
+		$('.panel-search').toggle(500);
+	});
+
+	$('.sub-panel').on('click', '.panel-heading', function(event) {
+		$(this).next().toggle(500);
+	});
+
 });
