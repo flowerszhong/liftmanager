@@ -18,26 +18,31 @@ class Report_model extends CI_Model
 
     public function build_fields($fields)
     {
-    	$this->db->select("$this->table.*,$this->agent_table.shortname customer_com");
-    	$this->db->from($this->table);
-    	$this->db->join($this->agent_table,"$this->table.customer_com_id=$this->agent_table.id");
-    	$this->db->where("$this->agent_table.available",1);
+    	$this->db->select("admin.id admin_id,admin.name admin_name,admin.displayname admin_display,escalator.id escalator_id,escalator.lid escalator_lid,escalator.location escalator_location,report.doc report_doc,report.id report_id,report.lid report_lid,report.submitor report_submitor");
+    	$this->db->from('report');
+    	$this->db->join('escalator',"report.lid=escalator.lid");
+    	$this->db->join('admin',"report.submitor=admin.id");
 
-    	if(isset($filter['starttime'])){
-    	    $starttime = strtotime($filter['starttime']);
-    	    $starttime = date('Y-m-d H:i:s',$starttime);
-    	    $this->db->where("$this->table.starttime >=",$starttime);
+    	if(isset($fields['lid'])){
+    	    $lid = $fields['lid'];
+    	    $this->db->group_start();
+    	    $this->db->where("escalator.lid",$lid);
+    	    $this->db->group_end();
     	}
 
-    	if(!empty($filter['company'])){
-    	    $customer_com_id = $filter['company'];
-    	    $this->db->where("$this->agent_table.id",$customer_com_id);
+    	if(!empty($filter['location'])){
+    	    $location = $fields['location'];
+    	    $this->db->where("escalator.location",$location);
     	}
 
-    	if(!empty($filter['state'])){
-    	    $state = $filter['state'];
-    	    $this->db->where("$this->table.state",$state);
-    	}
+    }
+
+    public function record_count($get)
+    {
+    	$this->build_fields($get);
+
+    	$query = $this->db->get();
+    	return $query->num_rows();
     }
 
 }

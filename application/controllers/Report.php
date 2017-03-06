@@ -38,5 +38,10 @@ class Report extends MY_Controller
 
         return $config;
     }
+
+    public function add()
+    {
+    	$this->load->view('report/add');
+    }
 }
  ?>
