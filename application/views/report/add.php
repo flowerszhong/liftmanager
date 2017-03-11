@@ -7,19 +7,35 @@
 			新增 验收检验报告
 		</div>
 		<div class="panel-body">
-			<?php echo form_open('report/add',array("class"=>"form-horizontal report-add-form")); ?>
+			<?php if(isset($errors)){
+				echo $errors;
+				} ?>
+
+			<?php echo validation_errors(); ?>
+			<?php echo form_open_multipart('report/add',array("class"=>"form-horizontal report-add-form")); ?>
 
 			<div class="form-group">
-				<label for="lid" class="col-md-2 control-label">电梯编号</label>
-				<div class="col-md-10">
+				<label for="lid" class="col-md-1 control-label">电梯编号</label>
+				<div class="col-md-11">
 					<input type="text" name="lid" value="<?php echo $this->input->post('lid'); ?>" class="form-control" id="lid" />
+				</div>
+
+
+			</div>
+			<div class="form-group">
+				<?php $this->load->view('report/lifts'); ?>
+			</div>
+
+			<div class="form-group">
+				<label for="lid" class="col-md-1 control-label">上传报告</label>
+				<div class="col-md-11">
+					<input type="file" name="doc" size="20" />
 				</div>
 			</div>
 
 			<div class="form-group">
-				<label for="lid" class="col-md-2 control-label">电梯位置</label>
-				<div class="col-md-10">
-					<input type="text" name="lid" value="<?php echo $this->input->post('lid'); ?>" class="form-control" id="lid" />
+				<div class="col-md-offset-1 col-md-11">
+					<input type="submit" name="add" class="btn btn-primary" value="确认新增"  />
 				</div>
 			</div>
 

@@ -13,20 +13,27 @@ class Report_model extends CI_Model
 
     public function get_reports($get,$limit,$page=0)
     {
-    	$this->build_fields( $get );
+    	$query = $this->build_fields( $get );
+        $query = $this->db->get();
+        return $query->result_array();
     }
 
     public function build_fields($fields)
     {
-    	$this->db->select("admin.id admin_id,admin.name admin_name,admin.displayname admin_display,escalator.id escalator_id,escalator.lid escalator_lid,escalator.location escalator_location,report.doc report_doc,report.id report_id,report.lid report_lid,report.submitor report_submitor");
+    	$this->db->select("admin.id admin_id,admin.name admin_name,admin.displayname admin_display,
+            escalator.id escalator_id,escalator.lid escalator_lid,escalator.location escalator_location,
+            elevator.id elevator_id,elevator.lid elevator_lid,elevator.location elevator_location,
+            report.doc,report.id r_id,report.lid r_lid,report.submit_date,report.update_date");
     	$this->db->from('report');
-    	$this->db->join('escalator',"report.lid=escalator.lid");
+        $this->db->join('escalator',"report.lid=escalator.lid",'left');
+    	$this->db->join('elevator',"report.lid=elevator.lid",'left');
     	$this->db->join('admin',"report.submitor=admin.id");
 
     	if(isset($fields['lid'])){
     	    $lid = $fields['lid'];
     	    $this->db->group_start();
-    	    $this->db->where("escalator.lid",$lid);
+            $this->db->where("escalator.lid",$lid);
+    	    $this->db->or_where("elevator.lid",$lid);
     	    $this->db->group_end();
     	}
 
@@ -34,6 +41,8 @@ class Report_model extends CI_Model
     	    $location = $fields['location'];
     	    $this->db->where("escalator.location",$location);
     	}
+
+        $this->db->order_by('report.id','desc');
 
     }
 
@@ -43,6 +52,19 @@ class Report_model extends CI_Model
 
     	$query = $this->db->get();
     	return $query->num_rows();
+    }
+
+    public function insert_report($lid,$doc)
+    {
+        $data = array(
+            'lid' => $lid,
+            'doc' => $doc,
+            'submitor' => $this->admin_id,
+        );
+
+        $insert_id = $this->db->insert('report', $data);
+
+        return $insert_id;
     }
 
 }

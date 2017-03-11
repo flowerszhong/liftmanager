@@ -7,6 +7,8 @@ class Report extends MY_Controller
     {
         parent::__construct();
         $this->load->model('Report_model');
+        $this->load->model('Escalator_model');
+        $this->load->model('Elevator_model');
     } 
 
 
@@ -41,7 +43,44 @@ class Report extends MY_Controller
 
     public function add()
     {
-    	$this->load->view('report/add');
+        $this->load->library('form_validation');
+        $this->upload_config();
+
+        $this->form_validation->set_rules('lid','电梯编号','required');
+
+        $escalators = $this->Escalator_model->get_all_escalator();
+        $elevators = $this->Elevator_model->get_all_elevator();
+        $data = array('escalators'=>$escalators,'elevators'=>$elevators);
+        if($this->form_validation->run()){ 
+            $lid = $this->input->post('lid');
+            if (!$this->upload->do_upload('doc')){
+                $data['errors'] = $this->upload->display_errors();
+            }else{
+                $doc = $this->upload->data();
+                $doc_name = $doc['file_name'];
+                $insert_id = $this->Report_model->insert_report($lid,$doc_name);
+                if($insert_id){
+                    redirect('report/index');
+                }
+            }
+        }
+
+    	$this->load->view('report/add',$data);
     }
+
+
+    public function upload_config()
+    {
+        $config['upload_path']      = './uploads/';
+        $config['allowed_types']    = 'gif|jpg|png';
+        $config['max_size']     = 2048;
+        $config['encrypt_name'] = True;
+
+        $this->load->library('upload', $config);
+
+        
+    }
+
+
 }
  ?>

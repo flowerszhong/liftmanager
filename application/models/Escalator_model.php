@@ -99,4 +99,5 @@ class Escalator_model extends CI_Model
             }
         }
     }
+
 }
