@@ -97,3 +97,10 @@ defined('M_STATE_PROBLEM')     or define('M_STATE_PROBLEM',4);
 defined('M_STATE_SOVLED')      or define('M_STATE_SOVLED',6);
 
 
+
+defined('PER_PAGE')            or define('PER_PAGE',10);
+
+
+
+
+

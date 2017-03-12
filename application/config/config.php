@@ -23,9 +23,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://www.mzhong.com/liftmanager';
 $config['base_url'] = 'http://www.quickwebsite.xyz/liftmanager';
 $config['base_url'] = 'http://localhost/liftmanager';
+$config['base_url'] = 'http://192.168.1.103/liftmanager';
+$config['base_url'] = 'http://www.mzhong.com/liftmanager';
 
 /*
 |--------------------------------------------------------------------------

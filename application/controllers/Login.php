@@ -28,7 +28,7 @@ class Login extends CI_Controller {
     	        $this->load->view('login',$view_data);
     	    }else{
                 $this->session->set_userdata('admin',$login_data);
-        	    redirect('ovarhaul/index','refresh');
+        	    redirect('overhaul/index','refresh');
     	    }
     	}else{
     		$this->load->view('login');

@@ -68,4 +68,64 @@ class Overhaul_model extends CI_Model
             return "Error occuring while deleting lm_overhaul";
         }
     }
+
+
+
+    public function record_query($search,$limit,$page=0)
+    {
+       
+        $this->build_fields($search);
+        $this->db->limit($limit,$page);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function record_count($search)
+    {
+        $this->build_fields($search);
+        $query = $this->db->get();
+        return $query->num_rows();
+    }
+
+    public function build_fields($fields)
+    {
+        $this->db->select("admin.id admin_id,admin.name admin_name,admin.displayname admin_display,
+            escalator.id escalator_id,escalator.lid escalator_lid,escalator.location escalator_location,
+            elevator.id elevator_id,elevator.lid elevator_lid,elevator.location elevator_location,
+            overhaul.*");
+        $this->db->from('overhaul');
+        $this->db->join('escalator',"overhaul.lid=escalator.lid",'left');
+        $this->db->join('elevator',"overhaul.lid=elevator.lid",'left');
+        $this->db->join('admin',"overhaul.submitor=admin.id");
+
+        if(!empty($fields['lid'])){
+            $lid = $fields['lid'];
+            $this->db->group_start();
+            $this->db->where("escalator.lid",$lid);
+            $this->db->or_where("elevator.lid",$lid);
+            $this->db->group_end();
+        }
+
+        if(!empty($fields['location'])){
+            $location = $fields['location'];
+            $this->db->group_start();
+            $this->db->like("escalator.location",$location);
+            $this->db->or_like("elevator.location",$location);
+            $this->db->group_end();
+        }
+
+        if(!empty($fields['supportor'])){
+            $supportor = $fields['supportor'];
+            $this->db->like("overhaul.supportor",$supportor);
+        }
+
+        if(!empty($fields['preparer'])){
+            $preparer = $fields['preparer'];
+            $this->db->like("overhaul.preparer",$preparer);
+        }
+
+        $this->db->order_by('overhaul.id','desc');
+
+
+    }
 }

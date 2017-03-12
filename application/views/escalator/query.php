@@ -1,3 +1,5 @@
+
+
 <?php echo form_open('escalator/index',array('class'=>'form-horizontal escalator-query-form','method'=>'get')); ?>
 		
 	<div class="panel-search panel panel-success">
@@ -249,11 +251,5 @@
 			</div>	
 	</div>
 	</div>
-
-
-
-
-				
-
 
 <?php echo form_close(); ?>

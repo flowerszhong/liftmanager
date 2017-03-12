@@ -19,8 +19,11 @@ class Overhaul extends MY_Controller
      */
     function index()
     {
-        $data['overhaul'] = $this->Overhaul_model->get_all_overhaul();
-
+        $get = $this->input->get();
+        $base_url = site_url( 'overhaul/index', null );
+        $config = $this->config_pagination($base_url,$get);
+        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+        $data['overhaul'] = $this->Overhaul_model->record_query($get,$config['per_page'],$page);
         $this->load->view('overhaul/index',$data);
     }
 
@@ -50,11 +53,11 @@ class Overhaul extends MY_Controller
 				'f_done' => $this->input->post('f_done'),
 				'supportor' => $this->input->post('supportor'),
 				'preparer' => $this->input->post('preparer'),
-				'submitor' => $this->input->post('submitor'),
+				'submitor' => $this->admin_id,
 				'submit_date' => date('Y-m-d H:i:s'),
             );
             
-            $lm_overhaul_id = $this->Lm_overhaul_model->add_lm_overhaul($params);
+            $overhaul_id = $this->Overhaul_model->add_overhaul($params);
             redirect('overhaul/index');
         }
         else
@@ -69,7 +72,7 @@ class Overhaul extends MY_Controller
     function edit($id)
     {   
         // check if the lm_overhaul exists before trying to edit it
-        $data['lm_overhaul'] = $this->Overhaul_model->get_overhaul($id);
+        $data['overhaul'] = $this->Overhaul_model->get_overhaul($id);
         
         if(isset($data['overhaul']['id']))
         {
@@ -90,7 +93,6 @@ class Overhaul extends MY_Controller
 					'f_done' => $this->input->post('f_done'),
 					'supportor' => $this->input->post('supportor'),
 					'preparer' => $this->input->post('preparer'),
-					'submitor' => $this->input->post('submitor'),
                 );
 
                 $this->Lm_overhaul_model->update_lm_overhaul($id,$params);            
@@ -104,6 +106,14 @@ class Overhaul extends MY_Controller
         else
             show_error('The lm_overhaul you are trying to edit does not exist.');
     } 
+
+
+    public function view($id)
+    {
+        $data['overhaul'] = $this->Overhaul_model->get_overhaul($id);
+        $this->load->view('overhaul/view',$data);
+        
+    }
 
     /*
      * Deleting lm_overhaul
@@ -120,6 +130,27 @@ class Overhaul extends MY_Controller
         }
         else
             show_error('The lm_overhaul you are trying to delete does not exist.');
+    }
+
+
+    public function config_pagination($base_url,$get)
+    {
+        $this->load->library('pagination');
+        $config = array();
+        // $this->config->load('pagination');
+        $config["base_url"] = $base_url;
+        if (count($get) > 0) {
+            $config['suffix'] = '?' . http_build_query($get, '', "&");
+        }
+        $config['first_url'] = $base_url . '?' . http_build_query($get, '', "&");
+        $config["total_rows"] = $this->Overhaul_model->record_count($get);
+        $config["per_page"] = PER_PAGE;
+        $config["uri_segment"] = 3;
+        $config['use_page_numbers'] = TRUE;
+
+        $this->pagination->initialize($config);
+
+        return $config;
     }
     
 }

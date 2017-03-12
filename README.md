@@ -69,4 +69,13 @@ $db['default'] = array(
 浏览器打开 `http://localhost/liftmanager`
 
 
+## 如何部署在局域网
+首先，查看自己的本机IP， 比如，本机IP为192.168.1.103
+则在在`application/config/config.php`文件下设置
+$config['base_url'] = 'http://192.168.1.103/liftmanager';
+然后其它局域网机器通过 http://192.168.1.103/liftmanager 就能访问该系统
+
+
+
+
 

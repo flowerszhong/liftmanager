@@ -1,6 +1,5 @@
 
 <?php $this->load->view('header'); ?>
-<link rel="stylesheet" href="<?php echo asset_file_url('css/escalator.css'); ?>" />
 
 <div class="row">
 	<div class="col-lg-12">

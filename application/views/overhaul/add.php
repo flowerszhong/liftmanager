@@ -11,13 +11,13 @@
 <div class="row">
 	<div class="col-lg-12">
 	<div class="panel panel-default">
-		<div class="panel-heading">
+		<div class="panel- heading">
 			新增检修记录
 		</div>
 		<div class="panel-body">
 			<?php echo validation_errors(); ?>
 
-			<?php echo form_open('lm_overhaul/add',array("class"=>"form-horizontal overhaul-add-form")); ?>
+			<?php echo form_open('overhaul/add',array("class"=>"form-horizontal overhaul-add-form")); ?>
 
 			<div class="form-group">
 				<label for="lid" class="col-md-1 control-label">电梯编号</label>
@@ -32,7 +32,7 @@
 			<div class="form-group">
 				<label for="lid" class="col-md-1 control-label">报修时间</label> 
 				<div class="col-md-11">
-					<input class="form-control" type="text" name="f_create" value="<?php echo $this->input->post('f_create'); ?>" />
+					<input class="form-control" type="date" name="f_create" value="<?php echo $this->input->post('f_create'); ?>" />
 				</div>
 			</div>
 			<div class="form-group">
@@ -66,7 +66,7 @@
 			   <div class="form-group">
 			   	<label for="f_done" class="col-md-1 control-label">修复时间</label> 
 			   	<div class="col-md-11">
-			   		<input class="form-control" type="text" name="f_done" value="<?php echo $this->input->post('f_done'); ?>" />
+			   		<input class="form-control" type="date" name="f_done" value="<?php echo $this->input->post('f_done'); ?>" />
 			   	</div>
 			   </div>
 

@@ -12,14 +12,14 @@
 	<div class="col-lg-12">
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			编辑
+			查看
 		</div>
 		<div class="panel-body">
 			
 
 			<?php echo validation_errors(); ?>
 
-			<?php echo form_open('overhaul/edit/'.$overhaul['id'],array("class"=>"form-horizontal overhaul-edit-form")); ?>
+			<?php echo form_open(null,array("class"=>"form-horizontal overhaul-edit-form")); ?>
 
 			<div class="form-group">
 				<label for="lid" class="col-md-1 control-label">电梯编号</label>
@@ -86,12 +86,6 @@
 				</div>
 			</div>
 				
-				
-				<div class="form-group">
-					<div class="col-md-offset-1 col-md-11">
-						<button type="submit" class="btn btn-success">确认编辑</button>
-			        </div>
-				</div>
 			<?php echo form_close(); ?>
 		</div>
 	</div>

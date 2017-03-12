@@ -13,7 +13,8 @@ class Report_model extends CI_Model
 
     public function get_reports($get,$limit,$page=0)
     {
-    	$query = $this->build_fields( $get );
+    	$this->build_fields( $get );
+        $this->db->limit($limit,$page);
         $query = $this->db->get();
         return $query->result_array();
     }
@@ -29,7 +30,7 @@ class Report_model extends CI_Model
     	$this->db->join('elevator',"report.lid=elevator.lid",'left');
     	$this->db->join('admin',"report.submitor=admin.id");
 
-    	if(isset($fields['lid'])){
+    	if(!empty($fields['lid'])){
     	    $lid = $fields['lid'];
     	    $this->db->group_start();
             $this->db->where("escalator.lid",$lid);
@@ -37,10 +38,15 @@ class Report_model extends CI_Model
     	    $this->db->group_end();
     	}
 
-    	if(!empty($filter['location'])){
+    	if(!empty($fields['location'])){
     	    $location = $fields['location'];
-    	    $this->db->where("escalator.location",$location);
+            $this->db->group_start();
+            $this->db->like("escalator.location",$location);
+            $this->db->or_like("elevator.location",$location);
+            $this->db->group_end();
     	}
+
+       
 
         $this->db->order_by('report.id','desc');
 

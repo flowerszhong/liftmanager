@@ -17,7 +17,8 @@ class Report extends MY_Controller
     	$get = $this->input->get();
     	$base_url = site_url('report/index');
     	$config = $this->config_pagination($base_url,$get);
-    	$data['reports'] = $this->Report_model->get_reports($get,$config['per_page'],$page=0);
+        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+    	$data['reports'] = $this->Report_model->get_reports($get,$config['per_page'],$page);
     	$this->load->view('report/index',$data);
     }
 
@@ -32,7 +33,7 @@ class Report extends MY_Controller
         }
         $config['first_url'] = $base_url . '?' . http_build_query($get, '', "&");
         $config["total_rows"] = $this->Report_model->record_count($get);
-        $config["per_page"] = 3;
+        $config["per_page"] = PER_PAGE;
         $config["uri_segment"] = 3;
         $config['use_page_numbers'] = TRUE;
 

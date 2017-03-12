@@ -55,7 +55,9 @@
 			<?php } ?>
 
 		</table>
-		
+		<?php if($this->pagination){
+					echo $this->pagination->create_links();
+				} ?>
 			
 		</div>
 	</div>

@@ -204,7 +204,7 @@ class Elevator extends MY_Controller
         }
         $config['first_url'] = $base_url . '?' . http_build_query($get, '', "&");
         $config["total_rows"] = $this->Elevator_model->record_count($get);
-        $config["per_page"] = 3;
+        $config["per_page"] = PER_PAGE;
         $config["uri_segment"] = 3;
         $config['use_page_numbers'] = TRUE;
 
