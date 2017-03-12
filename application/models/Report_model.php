@@ -67,4 +67,22 @@ class Report_model extends CI_Model
         return $insert_id;
     }
 
+    public function get_report($id)
+    {
+        return $this->db->get_where('report',array('id'=>$id))->row_array();
+    }
+
+    function delete_report($id)
+    {
+        $response = $this->db->delete('report',array('id'=>$id));
+        if($response)
+        {
+            return "删除报告成功";
+        }
+        else
+        {
+            return "发生错误，删除报告失败";
+        }
+    }
+
 }

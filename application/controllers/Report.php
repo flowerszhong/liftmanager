@@ -77,8 +77,20 @@ class Report extends MY_Controller
         $config['encrypt_name'] = True;
 
         $this->load->library('upload', $config);
+    }
 
-        
+    function del($id)
+    {
+        $report = $this->Report_model->get_report($id);
+
+        // check if the elevator exists before trying to delete it
+        if(isset($report['id']))
+        {
+            $this->Report_model->delete_report($id);
+            redirect('report/index');
+        }
+        else
+            show_error('该报告不存在.');
     }
 
 

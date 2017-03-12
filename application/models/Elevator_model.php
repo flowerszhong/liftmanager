@@ -68,4 +68,34 @@ class Elevator_model extends CI_Model
             return "Error occuring while deleting elevator";
         }
     }
+
+    public function record_query($search,$limit,$page=0)
+    {
+       
+        $this->record_field($search);
+        $this->db->limit($limit,$page);
+        $query = $this->db->get('elevator');
+        return $query->result_array();
+    }
+
+    public function record_count($search)
+    {
+        $this->record_field($search);
+        $query = $this->db->get('elevator');
+        return $query->num_rows();
+    }
+
+
+    public function record_field($fields)
+    {
+        if(!empty($fields['lid'])){
+            $this->db->where('lid',$fields['lid']);
+        }else{
+            foreach ($fields as $key => $s) {
+                if(!empty($s)){
+                    $this->db->or_like($key,$s);
+                }
+            }
+        }
+    }
 }

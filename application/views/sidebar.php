@@ -35,18 +35,13 @@
                         <i class="icon-tasks"> </i> 车站管理    
                     </a>
                 </li>
-                <li class="<?php echo activate_menu('lift') . ' panel'; ?>">
-                    <a href="<?php echo site_url('lift/index') ?>" data-parent="#menu" data-toggle="collapse" class="accordion-toggle collapsed" data-target="#form-nav">
-                        <i class="icon-list-ol"></i> 电梯管理
-                    </a>
-                </li>
 
                 <?php } ?>
                 
 
                 <li class="<?php echo activate_menu('escalator') . ' panel'; ?>">
                     <a href="<?php echo site_url('escalator/index'); ?>">
-                        <i class="icon-list-ul"></i> 扶梯基础资料
+                        <i class="icon-list-ol"></i> 扶梯基础资料
                     </a>
                 </li>
 
@@ -57,16 +52,17 @@
                     </a>
                 </li>
 
+                <li class="divider"></li>
 
-                <li class="<?php echo activate_menu('maintenance') . ' panel'; ?>">
-                    <a href="<?php echo site_url('maintenance/index'); ?>">
-                        <i class="icon-list-ul"></i> 电梯故障维修记录
+                <li class="<?php echo activate_menu('overhaul') . ' panel'; ?>">
+                    <a href="<?php echo site_url('overhaul/index'); ?>">
+                        <i class="icon-list-ol"></i> 电梯故障维修记录
                     </a>
                 </li>
 
                 <li class="<?php echo activate_menu('report') . ' panel'; ?>">
                     <a href="<?php echo site_url('report/index'); ?>">
-                        <i class="icon-list-ul"></i> 电梯年度验收检验报告
+                        <i class="icon-file"></i> 电梯年度验收检验报告
                     </a>
                 </li>
                 <li class="<?php echo activate_menu('setting') . ' panel'; ?>">

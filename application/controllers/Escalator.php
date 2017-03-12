@@ -63,10 +63,9 @@ class Escalator extends MY_Controller
 				'register_lid' => $this->input->post('register_lid'),
 				'register_copy' => $this->input->post('register_copy'),
 				'preparer' => $this->input->post('preparer'),
-				'submitor' => $this->input->post('submitor'),
-				'submit_date' => $this->input->post('submit_date'),
-				'update_date' => $this->input->post('update_date'),
-				'station_id' => $this->input->post('station_id'),
+				'submitor' => $this->admin_id,
+				'submit_date' => date('Y-m-d H:i:s'),
+				'station_id' => $this->admin_station,
             );
             
             $escalator_id = $this->Escalator_model->add_escalator($params);
@@ -120,10 +119,6 @@ class Escalator extends MY_Controller
 					'register_lid' => $this->input->post('register_lid'),
 					'register_copy' => $this->input->post('register_copy'),
 					'preparer' => $this->input->post('preparer'),
-					'submitor' => $this->input->post('submitor'),
-					'submit_date' => $this->input->post('submit_date'),
-					'update_date' => $this->input->post('update_date'),
-					'station_id' => $this->input->post('station_id'),
                 );
 
                 $this->Escalator_model->update_escalator($id,$params);            

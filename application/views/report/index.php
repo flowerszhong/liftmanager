@@ -7,13 +7,10 @@
 			年度电梯验收检验报告列表
 		</div>
 		<div class="panel-body">
-		<div class="pull-left clearfix">
-			<a href="<?php echo site_url('report/add'); ?>" class="btn btn-primary">新增加扶梯</a> 
-		</div>
+		<a href="<?php echo site_url('report/add'); ?>" class="btn btn-primary">新增加报告</a> 
 
-		<?php var_dump($reports); ?>
 
-		<table class="table table-striped table-bordered">
+		<table class="table table-striped table-bordered table-index">
 		    <tr>
 				<th>电梯编号</th>
 				<th>电梯位置</th>
@@ -34,7 +31,7 @@
 						<?php echo $r['escalator_location'] ? $r['escalator_location']:$r['elevator_location']; ?>
 					</td>
 					<td>
-						<?php echo $r['doc']; ?>
+						<a href="<?php echo base_url('uploads/' . $r['doc']); ?>" target="_blank"><i class="icon-file"></i>查看报告</a>
 					</td>
 
 					<td>
@@ -50,9 +47,8 @@
 					</td>
 
 					<td>
-			            <a href="<?php echo site_url('escalator/view/'.$r['r_id']); ?>" class="btn btn-info">查看</a> 
-			            <a href="<?php echo site_url('escalator/edit/'.$r['r_id']); ?>" class="btn btn-info">编辑</a> 
-			            <a href="<?php echo site_url('escalator/remove/'.$r['r_id']); ?>" class="btn btn-danger">删除</a>
+			            <a href="<?php echo base_url('uploads/' . $r['doc']); ?>" target="_blank" class="btn btn-info">查看</a>
+			            <a href="<?php echo site_url('report/del/'.$r['r_id']); ?>" class="btn btn-danger btn-delete">删除</a>
 			        </td>
 
 				</tr>

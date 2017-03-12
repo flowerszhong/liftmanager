@@ -9,11 +9,9 @@
 			扶梯列表
 		</div>
 		<div class="panel-body">
-			<div class="pull-left clearfix">
-				<a href="#" class="btn btn-success" id="btn-search">查询</a> 
-				<a href="<?php echo site_url('escalator/add'); ?>" class="btn btn-primary">新增加扶梯</a> 
-			</div>
-			
+			<a href="#" class="btn btn-success" id="btn-search">查询</a> 
+			<a href="<?php echo site_url('escalator/add'); ?>" class="btn btn-primary">新增加扶梯</a> 
+
 			<?php $this->load->view('escalator/query'); ?>
 
 			<table class="table table-striped table-bordered table-index">
@@ -54,7 +52,7 @@
 					<td>
 			            <a href="<?php echo site_url('escalator/view/'.$l['id']); ?>" class="btn btn-info">查看</a> 
 			            <a href="<?php echo site_url('escalator/edit/'.$l['id']); ?>" class="btn btn-info">编辑</a> 
-			            <a href="<?php echo site_url('escalator/remove/'.$l['id']); ?>" class="btn btn-danger">删除</a>
+			            <a href="<?php echo site_url('escalator/remove/'.$l['id']); ?>" class="btn btn-danger btn-delete">删除</a>
 			        </td>
 			    </tr>
 				<?php } ?>

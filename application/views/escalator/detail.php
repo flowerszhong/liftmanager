@@ -8,7 +8,7 @@
 			查看
 		</div>
 		<div class="panel-body">
-			<?php echo form_open('escalator/edit/'.$escalator['id'],array("class"=>"form-horizontal escalator-edit-form")); ?>
+			<?php echo form_open('escalator/view/'.$escalator['id'],array("class"=>"form-horizontal escalator-edit-form")); ?>
 
 				<div class="form-group">
 					<label for="lid" class="col-md-2 control-label">电梯编号</label>

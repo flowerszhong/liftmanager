@@ -1,4 +1,9 @@
 <?php $this->load->view('header'); ?>
+<style>
+	#lid{
+		max-width:160px;
+	}
+</style>
 
 <div class="row">
 	<div class="col-lg-12">
@@ -23,7 +28,7 @@
 
 			</div>
 			<div class="form-group">
-				<?php $this->load->view('report/lifts'); ?>
+				<?php $this->load->view('lifts'); ?>
 			</div>
 
 			<div class="form-group">

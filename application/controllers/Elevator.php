@@ -17,7 +17,11 @@ class Elevator extends MY_Controller
      */
     function index()
     {
-        $data['elevator'] = $this->Elevator_model->get_all_elevator();
+        $get = $this->input->get();
+        $base_url = site_url('elevator/index',null);
+        $config = $this->config_pagination($base_url,$get);
+        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+        $data['elevator'] = $this->Elevator_model->record_query($get,$config['per_page'],$page);
 
         $this->load->view('elevator/index',$data);
     }
@@ -29,34 +33,7 @@ class Elevator extends MY_Controller
     {   
         $this->load->library('form_validation');
 
-		$this->form_validation->set_rules('lid','Lid','required|max_length[15]');
-		$this->form_validation->set_rules('location','Location','required|max_length[40]');
-		$this->form_validation->set_rules('code','Code','max_length[40]');
-		$this->form_validation->set_rules('product_contract','Product Contract','max_length[40]');
-		$this->form_validation->set_rules('product_orderer','Product Orderer','max_length[40]');
-		$this->form_validation->set_rules('product_id','Product Id','max_length[20]');
-		$this->form_validation->set_rules('product_name','Product Name','max_length[20]');
-		$this->form_validation->set_rules('product_driver','Product Driver','max_length[40]');
-		$this->form_validation->set_rules('product_type','Product Type','max_length[20]');
-		$this->form_validation->set_rules('product_os','Product Os','max_length[20]');
-		$this->form_validation->set_rules('product_maxweight','Product Maxweight','integer');
-		$this->form_validation->set_rules('product_speed','Product Speed','integer');
-		$this->form_validation->set_rules('product_doortype','Product Doortype','max_length[20]');
-		$this->form_validation->set_rules('product_doornum','Product Doornum','max_length[20]');
-		$this->form_validation->set_rules('product_boxsize','Product Boxsize','max_length[20]');
-		$this->form_validation->set_rules('register_id','Register Id','max_length[30]');
-		$this->form_validation->set_rules('register_code','Register Code','max_length[30]');
-		$this->form_validation->set_rules('register_com','Register Com','max_length[20]');
-		$this->form_validation->set_rules('register_type','Register Type','max_length[20]');
-		$this->form_validation->set_rules('register_model','Register Model','max_length[30]');
-		$this->form_validation->set_rules('register_maker','Register Maker','max_length[30]');
-		$this->form_validation->set_rules('register_licence','Register Licence','max_length[30]');
-		$this->form_validation->set_rules('register_pid','Register Pid','max_length[30]');
-		$this->form_validation->set_rules('register_lid','Register Lid','max_length[30]');
-		$this->form_validation->set_rules('register_copy','Register Copy','max_length[40]');
-		$this->form_validation->set_rules('preparer','Preparer','max_length[20]');
-		$this->form_validation->set_rules('submitor','Submitor','max_length[20]');
-		$this->form_validation->set_rules('station_id','Station Id','integer');
+		$this->add_validation();
 		
 		if($this->form_validation->run())     
         {   
@@ -88,10 +65,9 @@ class Elevator extends MY_Controller
 				'register_lid' => $this->input->post('register_lid'),
 				'register_copy' => $this->input->post('register_copy'),
 				'preparer' => $this->input->post('preparer'),
-				'submitor' => $this->input->post('submitor'),
-				'submit_date' => $this->input->post('submit_date'),
-				'update_date' => $this->input->post('update_date'),
-				'station_id' => $this->input->post('station_id'),
+                'submitor' => $this->admin_id,
+				'submit_date' => date('Y-m-d H:i:s'),
+				'station_id' => $this->admin_station,
             );
             
             $elevator_id = $this->Elevator_model->add_elevator($params);
@@ -102,6 +78,38 @@ class Elevator extends MY_Controller
             $this->load->view('elevator/add');
         }
     }  
+
+    public function add_validation()
+    {
+    	$this->form_validation->set_rules('lid','Lid','required|max_length[15]');
+    	$this->form_validation->set_rules('location','Location','required|max_length[40]');
+    	$this->form_validation->set_rules('code','Code','max_length[40]');
+    	$this->form_validation->set_rules('product_contract','Product Contract','max_length[40]');
+    	$this->form_validation->set_rules('product_orderer','Product Orderer','max_length[40]');
+    	$this->form_validation->set_rules('product_id','Product Id','max_length[20]');
+    	$this->form_validation->set_rules('product_name','Product Name','max_length[20]');
+    	$this->form_validation->set_rules('product_driver','Product Driver','max_length[40]');
+    	$this->form_validation->set_rules('product_type','Product Type','max_length[20]');
+    	$this->form_validation->set_rules('product_os','Product Os','max_length[20]');
+    	$this->form_validation->set_rules('product_maxweight','Product Maxweight','integer');
+    	$this->form_validation->set_rules('product_speed','Product Speed','integer');
+    	$this->form_validation->set_rules('product_doortype','Product Doortype','max_length[20]');
+    	$this->form_validation->set_rules('product_doornum','Product Doornum','max_length[20]');
+    	$this->form_validation->set_rules('product_boxsize','Product Boxsize','max_length[20]');
+    	$this->form_validation->set_rules('register_id','Register Id','max_length[30]');
+    	$this->form_validation->set_rules('register_code','Register Code','max_length[30]');
+    	$this->form_validation->set_rules('register_com','Register Com','max_length[20]');
+    	$this->form_validation->set_rules('register_type','Register Type','max_length[20]');
+    	$this->form_validation->set_rules('register_model','Register Model','max_length[30]');
+    	$this->form_validation->set_rules('register_maker','Register Maker','max_length[30]');
+    	$this->form_validation->set_rules('register_licence','Register Licence','max_length[30]');
+    	$this->form_validation->set_rules('register_pid','Register Pid','max_length[30]');
+    	$this->form_validation->set_rules('register_lid','Register Lid','max_length[30]');
+    	$this->form_validation->set_rules('register_copy','Register Copy','max_length[40]');
+    	$this->form_validation->set_rules('preparer','Preparer','max_length[20]');
+    	$this->form_validation->set_rules('submitor','Submitor','max_length[20]');
+    	$this->form_validation->set_rules('station_id','Station Id','integer');
+    }
 
     /*
      * Editing a elevator
@@ -115,34 +123,7 @@ class Elevator extends MY_Controller
         {
             $this->load->library('form_validation');
 
-			$this->form_validation->set_rules('lid','Lid','required|max_length[15]');
-			$this->form_validation->set_rules('location','Location','required|max_length[40]');
-			$this->form_validation->set_rules('code','Code','max_length[40]');
-			$this->form_validation->set_rules('product_contract','Product Contract','max_length[40]');
-			$this->form_validation->set_rules('product_orderer','Product Orderer','max_length[40]');
-			$this->form_validation->set_rules('product_id','Product Id','max_length[20]');
-			$this->form_validation->set_rules('product_name','Product Name','max_length[20]');
-			$this->form_validation->set_rules('product_driver','Product Driver','max_length[40]');
-			$this->form_validation->set_rules('product_type','Product Type','max_length[20]');
-			$this->form_validation->set_rules('product_os','Product Os','max_length[20]');
-			$this->form_validation->set_rules('product_maxweight','Product Maxweight','integer');
-			$this->form_validation->set_rules('product_speed','Product Speed','integer');
-			$this->form_validation->set_rules('product_doortype','Product Doortype','max_length[20]');
-			$this->form_validation->set_rules('product_doornum','Product Doornum','max_length[20]');
-			$this->form_validation->set_rules('product_boxsize','Product Boxsize','max_length[20]');
-			$this->form_validation->set_rules('register_id','Register Id','max_length[30]');
-			$this->form_validation->set_rules('register_code','Register Code','max_length[30]');
-			$this->form_validation->set_rules('register_com','Register Com','max_length[20]');
-			$this->form_validation->set_rules('register_type','Register Type','max_length[20]');
-			$this->form_validation->set_rules('register_model','Register Model','max_length[30]');
-			$this->form_validation->set_rules('register_maker','Register Maker','max_length[30]');
-			$this->form_validation->set_rules('register_licence','Register Licence','max_length[30]');
-			$this->form_validation->set_rules('register_pid','Register Pid','max_length[30]');
-			$this->form_validation->set_rules('register_lid','Register Lid','max_length[30]');
-			$this->form_validation->set_rules('register_copy','Register Copy','max_length[40]');
-			$this->form_validation->set_rules('preparer','Preparer','max_length[20]');
-			$this->form_validation->set_rules('submitor','Submitor','max_length[20]');
-			$this->form_validation->set_rules('station_id','Station Id','integer');
+			$this->add_validation();
 		
 			if($this->form_validation->run())     
             {   
@@ -174,10 +155,6 @@ class Elevator extends MY_Controller
 					'register_lid' => $this->input->post('register_lid'),
 					'register_copy' => $this->input->post('register_copy'),
 					'preparer' => $this->input->post('preparer'),
-					'submitor' => $this->input->post('submitor'),
-					'submit_date' => $this->input->post('submit_date'),
-					'update_date' => $this->input->post('update_date'),
-					'station_id' => $this->input->post('station_id'),
                 );
 
                 $this->Elevator_model->update_elevator($id,$params);            
@@ -191,6 +168,13 @@ class Elevator extends MY_Controller
         else
             show_error('The elevator you are trying to edit does not exist.');
     } 
+
+
+    public function view($id)
+    {
+        $data['elevator'] = $this->Elevator_model->get_elevator($id);
+        $this->load->view('elevator/view',$data);
+    }
 
     /*
      * Deleting elevator
@@ -207,6 +191,26 @@ class Elevator extends MY_Controller
         }
         else
             show_error('The elevator you are trying to delete does not exist.');
+    }
+
+    public function config_pagination($base_url,$get)
+    {
+        $this->load->library('pagination');
+        $config = array();
+        // $this->config->load('pagination');
+        $config["base_url"] = $base_url;
+        if (count($get) > 0) {
+            $config['suffix'] = '?' . http_build_query($get, '', "&");
+        }
+        $config['first_url'] = $base_url . '?' . http_build_query($get, '', "&");
+        $config["total_rows"] = $this->Elevator_model->record_count($get);
+        $config["per_page"] = 3;
+        $config["uri_segment"] = 3;
+        $config['use_page_numbers'] = TRUE;
+
+        $this->pagination->initialize($config);
+
+        return $config;
     }
     
 }

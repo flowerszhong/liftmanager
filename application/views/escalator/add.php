@@ -231,30 +231,7 @@
 						<input type="text" name="preparer" value="<?php echo $this->input->post('preparer'); ?>" class="form-control" id="preparer" />
 					</div>
 				</div>
-				<div class="form-group">
-					<label for="submitor" class="col-md-2 control-label">提交人</label>
-					<div class="col-md-10">
-						<input type="text" name="submitor" value="<?php echo $this->input->post('submitor'); ?>" class="form-control" id="submitor" />
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="submit_date" class="col-md-2 control-label">提交时间</label>
-					<div class="col-md-10">
-						<input type="text" name="submit_date" value="<?php echo $this->input->post('submit_date'); ?>" class="form-control" id="submit_date" />
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="update_date" class="col-md-2 control-label">更新时间</label>
-					<div class="col-md-10">
-						<input type="text" name="update_date" value="<?php echo $this->input->post('update_date'); ?>" class="form-control" id="update_date" />
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="station_id" class="col-md-2 control-label">所属站点</label>
-					<div class="col-md-10">
-						<input type="text" name="station_id" value="<?php echo $this->input->post('station_id'); ?>" class="form-control" id="station_id" />
-					</div>
-				</div>
+				
 				</div>
 				</div>
 				

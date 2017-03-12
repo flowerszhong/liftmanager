@@ -2676,3 +2676,14 @@ fieldset[disabled] .btn-grad.btn-metis-6.active {
 .form-groups-style5{
   background-color: #7FDBFF;
 }
+
+
+.table-index{
+  clear:both;
+  margin-top: 10px;
+}
+
+.table-index th{
+  text-align: center;
+  vertical-align: middle;
+}

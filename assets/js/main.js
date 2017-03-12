@@ -81,4 +81,11 @@ $(function () {
 		$(this).next().toggle(500);
 	});
 
+
+	$('#lifts-tab').on('click', 'span', function(event) {
+		$('#lifts-tab').find('span.selected').removeClass('selected');
+		$(this).addClass('selected');
+		$('#lid').val($(this).text());
+	});
+
 });

@@ -1,24 +1,21 @@
 .escalator-edit-form input,
+.elevator-edit-form input,
 .escalator-query-form input,
-.escalator-add-form input{
+.elevator-query-form input,
+.escalator-add-form input,
+.elevator-add-form input{
 	max-width: 300px;
 }
 
+.escalator-query-form,
 .escalator-query-form{
 	clear: both;
 }
 
-.table-index{
-	clear: both;
-	margin-top: 20px;
-}
-.table-index th{
-	text-align: center;
-	vertical-align: middle;
-}
+
 
 .panel-search{
-	margin-top: 40px;
+	margin-top: 10px;
 	display: none;
 }
 

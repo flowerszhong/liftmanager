@@ -17,7 +17,7 @@ class MY_Controller extends CI_Controller {
     public function checkPermission()
     {
         if($this->admin_power<10){
-            redirect('maintenance/index','refresh');
+            redirect('ovarhaul/index','refresh');
         }
     }
 

@@ -170,3 +170,36 @@ create table if not exists report(
 	-- 更新时间	
 	update_date date
 );
+
+
+-- 检修记录
+create table if not exists overhaul(
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	lid varchar(15) not null,
+	-- 故障信息
+	f_create datetime,
+	f_description varchar(100),
+	f_cause varchar(100),
+	f_deal varchar(30),
+	f_change varchar(100),
+	f_done datetime,
+	supportor varchar(100),
+	preparer varchar(40),
+	submitor int,
+	submit_date datetime,
+	update_date datetime
+)
+
+-- 电梯位置	
+-- 电梯编号	
+-- 故障信息	报修时间
+-- 	故障现象
+-- 	故障原因
+-- 	处理方法
+-- 	更换配件
+-- 	修复时间
+-- 维修单位	
+-- 填报人	
+-- 提交人	
+-- 提交时间	
+-- 更新时间	
